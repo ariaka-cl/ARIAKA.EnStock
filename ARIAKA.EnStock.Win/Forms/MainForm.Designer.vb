@@ -20,9 +20,8 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
+            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel()
             Me.TableLayoutPanel_Main = New System.Windows.Forms.TableLayoutPanel()
             Me.TableLayoutPanel_Dash = New System.Windows.Forms.TableLayoutPanel()
             Me.PictureBox_HomeImage = New System.Windows.Forms.PictureBox()
@@ -192,6 +191,7 @@
             Me.SimpleButton_Productos.AutoWidthInLayoutControl = True
             Me.SimpleButton_Productos.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Productos.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.SimpleButton_Productos.Image = CType(resources.GetObject("SimpleButton_Productos.Image"), System.Drawing.Image)
             Me.SimpleButton_Productos.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
             Me.SimpleButton_Productos.Location = New System.Drawing.Point(3, 107)
             Me.SimpleButton_Productos.Name = "SimpleButton_Productos"
@@ -227,7 +227,7 @@
             Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow
             Me.Name = "MainForm"
             Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-            Me.Text = "Smart Gourtmet"
+            Me.Text = "EnStock"
             Me.TableLayoutPanel_Main.ResumeLayout(False)
             Me.TableLayoutPanel_Main.PerformLayout()
             Me.TableLayoutPanel_Dash.ResumeLayout(False)
