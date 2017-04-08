@@ -109,6 +109,18 @@
     <Compile Include="Controls\MarcaViewControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ProductosControl.Designer.vb">
+      <DependentUpon>ProductosControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductosControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProductosViewControl.Designer.vb">
+      <DependentUpon>ProductosViewControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductosViewControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -117,6 +129,7 @@
     </Compile>
     <Compile Include="Logica\Cliente.vb" />
     <Compile Include="Models\MarcaDTO.vb" />
+    <Compile Include="Models\ProductosDTO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -136,6 +149,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\MarcaControl.resx">
       <DependentUpon>MarcaControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProductosControl.resx">
+      <DependentUpon>ProductosControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProductosViewControl.resx">
+      <DependentUpon>ProductosViewControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

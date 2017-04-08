@@ -55,6 +55,74 @@ Namespace Logica
             End Try
         End Function
 
+        Public Function GetProduc() As List(Of Models.ProductosDTO)
+            Dim db As New EnStockContext
+            Try
+                Dim listProductos As List(Of Productos) = db.Productos.ToList()
+                Dim listMarca As List(Of Marca) = db.Marca.ToList()
+                Dim listProductosDto As New List(Of Models.ProductosDTO)
+                For Each produ As Productos In listProductos
+
+                    Dim marcaDto As New Models.MarcaDTO With {.ID = produ.MarcaID,
+                        .Nombre = listMarca.Where(Function(m) m.ID = produ.MarcaID).
+                        Select(Function(c) c.Nombre).SingleOrDefault()}
+
+                    listProductosDto.Add(New Models.ProductosDTO With {.ID = produ.ID,
+                                                                   .Nombre = produ.Nombre,
+                                                                   .Precio = produ.Precio,
+                                                                   .Codigo = produ.Codigo,
+                                                                   .Stock = produ.Stock,
+                                                                   .Talla = produ.Talla,
+                                                                   .MarcaID = produ.MarcaID,
+                                                                   .Marca = marcaDto})
+                Next
+
+                Return listProductosDto
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Obtener Productos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New List(Of Models.ProductosDTO)
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+        Public Function GuardarProductos(productoDto As Models.ProductosDTO) As Models.ProductosDTO
+            Dim db As New EnStockContext
+            Try
+                If productoDto Is Nothing Then Return New Models.ProductosDTO
+                Dim producto As New Productos With {.Codigo = productoDto.Codigo,
+                                                   .Nombre = productoDto.Nombre,
+                                                   .Precio = productoDto.Precio,
+                                                   .Stock = productoDto.Stock,
+                                                   .Talla = productoDto.Talla,
+                                                   .MarcaID = productoDto.MarcaID}
+                db.Productos.Add(producto)
+                db.SaveChanges()
+                productoDto.ID = producto.ID
+                Return productoDto
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Obtener Productos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New Models.ProductosDTO
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+        Public Function EliminarProducto(id As Integer) As Boolean
+            Dim db As New EnStockContext
+            Try
+                Dim produ As Productos = db.Productos.Where(Function(c) c.ID = id).SingleOrDefault()
+                db.Productos.Remove(produ)
+                db.SaveChanges()
+                Return True
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Eliminar Producto", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
 
     End Class
 End Namespace
