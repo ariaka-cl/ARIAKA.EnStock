@@ -121,6 +121,16 @@
     <Compile Include="Controls\ProductosViewControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\VentasGridControl.Designer.vb">
+      <DependentUpon>VentasGridControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VentasGridControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VentasViewControl.Designer.vb">
+      <DependentUpon>VentasViewControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VentasViewControl.vb" />
     <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -130,6 +140,7 @@
     <Compile Include="Logica\Cliente.vb" />
     <Compile Include="Models\MarcaDTO.vb" />
     <Compile Include="Models\ProductosDTO.vb" />
+    <Compile Include="Models\VentasDTO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -155,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ProductosViewControl.resx">
       <DependentUpon>ProductosViewControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VentasGridControl.resx">
+      <DependentUpon>VentasGridControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VentasViewControl.resx">
+      <DependentUpon>VentasViewControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>

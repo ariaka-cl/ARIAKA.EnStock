@@ -174,6 +174,7 @@
             Me.SimpleButton_Ventas.AutoWidthInLayoutControl = True
             Me.SimpleButton_Ventas.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Ventas.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.SimpleButton_Ventas.Image = CType(resources.GetObject("SimpleButton_Ventas.Image"), System.Drawing.Image)
             Me.SimpleButton_Ventas.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
             Me.SimpleButton_Ventas.Location = New System.Drawing.Point(3, 3)
             Me.SimpleButton_Ventas.Name = "SimpleButton_Ventas"
