@@ -115,6 +115,7 @@
     <Compile Include="Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logica\Cliente.vb" />
     <Compile Include="Models\MarcaDTO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -161,11 +162,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logica\" />
     <Folder Include="PDF\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\logo-ariaka-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ARIAKA.EnStock.Data\ARIAKA.EnStock.Data.vbproj">
+      <Project>{a2377e29-6e1b-4f16-a702-26249c86be59}</Project>
+      <Name>ARIAKA.EnStock.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
