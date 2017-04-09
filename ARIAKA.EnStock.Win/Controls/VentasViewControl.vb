@@ -1,3 +1,5 @@
-﻿Public Class VentasViewControl
+﻿Namespace Controls
+    Public Class VentasViewControl
 
-End Class
+    End Class
+End Namespace
