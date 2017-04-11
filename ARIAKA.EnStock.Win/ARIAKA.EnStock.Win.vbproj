@@ -121,6 +121,12 @@
     <Compile Include="Controls\ProductosViewControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\VentasControl.Designer.vb">
+      <DependentUpon>VentasControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VentasControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\VentasGridControl.Designer.vb">
       <DependentUpon>VentasGridControl.vb</DependentUpon>
     </Compile>
@@ -130,7 +136,9 @@
     <Compile Include="Controls\VentasViewControl.Designer.vb">
       <DependentUpon>VentasViewControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="Controls\VentasViewControl.vb" />
+    <Compile Include="Controls\VentasViewControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -167,6 +175,9 @@
     <EmbeddedResource Include="Controls\ProductosViewControl.resx">
       <DependentUpon>ProductosViewControl.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VentasControl.resx">
+      <DependentUpon>VentasControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\VentasGridControl.resx">
       <DependentUpon>VentasGridControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +200,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\ARIAKA.EnStock.Win.Models.ProductosDTO.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

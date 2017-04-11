@@ -20,8 +20,9 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel()
+            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
             Me.TableLayoutPanel_Main = New System.Windows.Forms.TableLayoutPanel()
             Me.TableLayoutPanel_Dash = New System.Windows.Forms.TableLayoutPanel()
             Me.PictureBox_HomeImage = New System.Windows.Forms.PictureBox()

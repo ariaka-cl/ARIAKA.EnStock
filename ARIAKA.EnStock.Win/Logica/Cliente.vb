@@ -123,6 +123,26 @@ Namespace Logica
             End Try
         End Function
 
+        'Public Function GetProductos() As List(Of Models.ProductosDTO)
+        '    Dim db As New EnStockContext
+        '    Try
+        '        Dim listProductos As List(Of Productos) = db.Productos.ToList()
+        '        Dim listProductosDto As New List(Of Models.ProductosDTO)
+        '        For Each producto As Productos In listProductos
+        '            listProductosDto.Add(New Models.ProductosDTO With {.ID = producto.ID, .Nombre = producto.Nombre,
+        '                                                                .MarcaID = producto.MarcaID, .Codigo = producto.Codigo,
+        '                                                                .Precio = producto.Precio, .Stock = producto.Stock,
+        '                                                                .Marca = New Marca With {.}})
+        '        Next
+        '        Return listProductosDto
+        '    Catch ex As Exception
+        '        MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error lista productos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '        Return New List(Of Models.ProductosDTO)
+        '    Finally
+        '        db.Dispose()
+        '    End Try
+        'End Function
+
 
     End Class
 End Namespace
