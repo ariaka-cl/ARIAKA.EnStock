@@ -49,17 +49,20 @@
             Me.LabelControl_Cantidad = New DevExpress.XtraEditors.LabelControl()
             Me.SimpleButton_Add = New DevExpress.XtraEditors.SimpleButton()
             Me.SimpleButton_Delete = New DevExpress.XtraEditors.SimpleButton()
+            Me.LabelControl_Productos_text = New DevExpress.XtraEditors.LabelControl()
             Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-            Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+            Me.GridControl_DetalleVenta = New DevExpress.XtraGrid.GridControl()
+            Me.DetalleVentasDTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
             Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
             Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colTalla = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colPrecio = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colStock = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colMarcaID = New DevExpress.XtraGrid.Columns.GridColumn()
-            Me.colMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.colFechaCreacion = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.colProductoID = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.GridColumnPrecio = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.colVentasID = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.TableLayoutPanel_Main.SuspendLayout()
             Me.TableLayoutPanel_Buttons.SuspendLayout()
             Me.TableLayoutPanel_VentaFecha.SuspendLayout()
@@ -70,7 +73,8 @@
             CType(Me.ProductosDTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.SearchLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TableLayoutPanel1.SuspendLayout()
-            CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridControl_DetalleVenta, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DetalleVentasDTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
@@ -98,7 +102,7 @@
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.07317!))
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.43902!))
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139.0!))
-            Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154.0!))
+            Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170.0!))
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.LabelControl_Total_Text, 1, 0)
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.LabelControl_Total_Value, 2, 0)
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.SimpleButton_Guardar, 3, 0)
@@ -116,7 +120,7 @@
             '
             Me.LabelControl_Total_Text.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Total_Text.Appearance.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Total_Text.Location = New System.Drawing.Point(234, 26)
+            Me.LabelControl_Total_Text.Location = New System.Drawing.Point(222, 26)
             Me.LabelControl_Total_Text.Name = "LabelControl_Total_Text"
             Me.LabelControl_Total_Text.Size = New System.Drawing.Size(76, 23)
             Me.LabelControl_Total_Text.TabIndex = 0
@@ -126,7 +130,7 @@
             '
             Me.LabelControl_Total_Value.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.LabelControl_Total_Value.Appearance.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Total_Value.Location = New System.Drawing.Point(316, 26)
+            Me.LabelControl_Total_Value.Location = New System.Drawing.Point(304, 26)
             Me.LabelControl_Total_Value.Name = "LabelControl_Total_Value"
             Me.LabelControl_Total_Value.Size = New System.Drawing.Size(12, 23)
             Me.LabelControl_Total_Value.TabIndex = 1
@@ -140,7 +144,7 @@
             Me.SimpleButton_Guardar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Guardar.Image = CType(resources.GetObject("SimpleButton_Guardar.Image"), System.Drawing.Image)
             Me.SimpleButton_Guardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(425, 8)
+            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(409, 8)
             Me.SimpleButton_Guardar.Name = "SimpleButton_Guardar"
             Me.SimpleButton_Guardar.Size = New System.Drawing.Size(115, 59)
             Me.SimpleButton_Guardar.TabIndex = 2
@@ -152,9 +156,10 @@
             Me.SimpleButton2.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.SimpleButton2.Appearance.Options.UseFont = True
             Me.SimpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+            Me.SimpleButton2.Enabled = False
             Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
             Me.SimpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton2.Location = New System.Drawing.Point(546, 8)
+            Me.SimpleButton2.Location = New System.Drawing.Point(530, 8)
             Me.SimpleButton2.Name = "SimpleButton2"
             Me.SimpleButton2.Size = New System.Drawing.Size(115, 59)
             Me.SimpleButton2.TabIndex = 3
@@ -175,7 +180,7 @@
             Me.TableLayoutPanel_VentaFecha.RowCount = 2
             Me.TableLayoutPanel_VentaFecha.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
             Me.TableLayoutPanel_VentaFecha.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel_VentaFecha.Size = New System.Drawing.Size(198, 70)
+            Me.TableLayoutPanel_VentaFecha.Size = New System.Drawing.Size(190, 70)
             Me.TableLayoutPanel_VentaFecha.TabIndex = 4
             '
             'DateTimePicker_Fecha
@@ -183,7 +188,7 @@
             Me.DateTimePicker_Fecha.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.DateTimePicker_Fecha.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.DateTimePicker_Fecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-            Me.DateTimePicker_Fecha.Location = New System.Drawing.Point(69, 41)
+            Me.DateTimePicker_Fecha.Location = New System.Drawing.Point(66, 41)
             Me.DateTimePicker_Fecha.Name = "DateTimePicker_Fecha"
             Me.DateTimePicker_Fecha.Size = New System.Drawing.Size(117, 23)
             Me.DateTimePicker_Fecha.TabIndex = 2
@@ -192,7 +197,7 @@
             '
             Me.LabelControl_Fecha_text.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Fecha_text.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Fecha_text.Location = New System.Drawing.Point(17, 44)
+            Me.LabelControl_Fecha_text.Location = New System.Drawing.Point(14, 44)
             Me.LabelControl_Fecha_text.Name = "LabelControl_Fecha_text"
             Me.LabelControl_Fecha_text.Size = New System.Drawing.Size(46, 16)
             Me.LabelControl_Fecha_text.TabIndex = 1
@@ -202,7 +207,7 @@
             '
             Me.LabelControl_Venta_Text.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Venta_Text.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Venta_Text.Location = New System.Drawing.Point(5, 9)
+            Me.LabelControl_Venta_Text.Location = New System.Drawing.Point(3, 9)
             Me.LabelControl_Venta_Text.Name = "LabelControl_Venta_Text"
             Me.LabelControl_Venta_Text.Size = New System.Drawing.Size(58, 16)
             Me.LabelControl_Venta_Text.TabIndex = 0
@@ -212,7 +217,7 @@
             '
             Me.TextEdit_Venta_Numero.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextEdit_Venta_Numero.Enabled = False
-            Me.TextEdit_Venta_Numero.Location = New System.Drawing.Point(69, 6)
+            Me.TextEdit_Venta_Numero.Location = New System.Drawing.Point(66, 6)
             Me.TextEdit_Venta_Numero.Name = "TextEdit_Venta_Numero"
             Me.TextEdit_Venta_Numero.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TextEdit_Venta_Numero.Properties.Appearance.Options.UseFont = True
@@ -221,17 +226,19 @@
             '
             'TableLayoutPanel_Productos
             '
-            Me.TableLayoutPanel_Productos.ColumnCount = 5
-            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.47067!))
-            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.72961!))
-            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.01717!))
-            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.30615!))
-            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.26987!))
-            Me.TableLayoutPanel_Productos.Controls.Add(Me.TextEdit_Cantidad, 2, 0)
-            Me.TableLayoutPanel_Productos.Controls.Add(Me.SearchLookUpEdit_Productos, 0, 0)
-            Me.TableLayoutPanel_Productos.Controls.Add(Me.LabelControl_Cantidad, 1, 0)
-            Me.TableLayoutPanel_Productos.Controls.Add(Me.SimpleButton_Add, 3, 0)
-            Me.TableLayoutPanel_Productos.Controls.Add(Me.SimpleButton_Delete, 4, 0)
+            Me.TableLayoutPanel_Productos.ColumnCount = 6
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.59514!))
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.04864!))
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.73104!))
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.30043!))
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.44778!))
+            Me.TableLayoutPanel_Productos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.87697!))
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.TextEdit_Cantidad, 3, 0)
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.SearchLookUpEdit_Productos, 1, 0)
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.LabelControl_Cantidad, 2, 0)
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.SimpleButton_Add, 4, 0)
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.SimpleButton_Delete, 5, 0)
+            Me.TableLayoutPanel_Productos.Controls.Add(Me.LabelControl_Productos_text, 0, 0)
             Me.TableLayoutPanel_Productos.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TableLayoutPanel_Productos.Location = New System.Drawing.Point(3, 85)
             Me.TableLayoutPanel_Productos.Name = "TableLayoutPanel_Productos"
@@ -243,7 +250,7 @@
             'TextEdit_Cantidad
             '
             Me.TextEdit_Cantidad.Anchor = System.Windows.Forms.AnchorStyles.Left
-            Me.TextEdit_Cantidad.Location = New System.Drawing.Point(284, 11)
+            Me.TextEdit_Cantidad.Location = New System.Drawing.Point(438, 11)
             Me.TextEdit_Cantidad.Name = "TextEdit_Cantidad"
             Me.TextEdit_Cantidad.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TextEdit_Cantidad.Properties.Appearance.Options.UseFont = True
@@ -254,7 +261,7 @@
             '
             Me.SearchLookUpEdit_Productos.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.SearchLookUpEdit_Productos.EditValue = "Seleccionar..."
-            Me.SearchLookUpEdit_Productos.Location = New System.Drawing.Point(3, 11)
+            Me.SearchLookUpEdit_Productos.Location = New System.Drawing.Point(119, 11)
             Me.SearchLookUpEdit_Productos.Name = "SearchLookUpEdit_Productos"
             Me.SearchLookUpEdit_Productos.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.SearchLookUpEdit_Productos.Properties.Appearance.Options.UseFont = True
@@ -263,7 +270,7 @@
             Me.SearchLookUpEdit_Productos.Properties.DisplayMember = "Nombre"
             Me.SearchLookUpEdit_Productos.Properties.ValueMember = "ID"
             Me.SearchLookUpEdit_Productos.Properties.View = Me.SearchLookUpEdit1View
-            Me.SearchLookUpEdit_Productos.Size = New System.Drawing.Size(186, 22)
+            Me.SearchLookUpEdit_Productos.Size = New System.Drawing.Size(220, 22)
             Me.SearchLookUpEdit_Productos.TabIndex = 4
             '
             'ProductosDTOBindingSource
@@ -330,7 +337,7 @@
             '
             'colMarca1
             '
-            Me.colMarca1.Caption = "Marca"
+            Me.colMarca1.Caption = "Proveedores"
             Me.colMarca1.FieldName = "Marca.Nombre"
             Me.colMarca1.Name = "colMarca1"
             Me.colMarca1.Visible = True
@@ -340,7 +347,7 @@
             '
             Me.LabelControl_Cantidad.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Cantidad.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Cantidad.Location = New System.Drawing.Point(216, 14)
+            Me.LabelControl_Cantidad.Location = New System.Drawing.Point(370, 14)
             Me.LabelControl_Cantidad.Name = "LabelControl_Cantidad"
             Me.LabelControl_Cantidad.Size = New System.Drawing.Size(62, 16)
             Me.LabelControl_Cantidad.TabIndex = 6
@@ -352,7 +359,7 @@
             Me.SimpleButton_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Add.Image = CType(resources.GetObject("SimpleButton_Add.Image"), System.Drawing.Image)
             Me.SimpleButton_Add.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-            Me.SimpleButton_Add.Location = New System.Drawing.Point(387, 3)
+            Me.SimpleButton_Add.Location = New System.Drawing.Point(522, 3)
             Me.SimpleButton_Add.Name = "SimpleButton_Add"
             Me.SimpleButton_Add.Size = New System.Drawing.Size(75, 38)
             Me.SimpleButton_Add.TabIndex = 7
@@ -363,16 +370,26 @@
             Me.SimpleButton_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Delete.Image = CType(resources.GetObject("SimpleButton_Delete.Image"), System.Drawing.Image)
             Me.SimpleButton_Delete.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-            Me.SimpleButton_Delete.Location = New System.Drawing.Point(468, 3)
+            Me.SimpleButton_Delete.Location = New System.Drawing.Point(603, 3)
             Me.SimpleButton_Delete.Name = "SimpleButton_Delete"
             Me.SimpleButton_Delete.Size = New System.Drawing.Size(75, 38)
             Me.SimpleButton_Delete.TabIndex = 8
+            '
+            'LabelControl_Productos_text
+            '
+            Me.LabelControl_Productos_text.Anchor = System.Windows.Forms.AnchorStyles.Right
+            Me.LabelControl_Productos_text.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelControl_Productos_text.Location = New System.Drawing.Point(42, 14)
+            Me.LabelControl_Productos_text.Name = "LabelControl_Productos_text"
+            Me.LabelControl_Productos_text.Size = New System.Drawing.Size(71, 16)
+            Me.LabelControl_Productos_text.TabIndex = 9
+            Me.LabelControl_Productos_text.Text = "Productos:"
             '
             'TableLayoutPanel1
             '
             Me.TableLayoutPanel1.ColumnCount = 1
             Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1.Controls.Add(Me.GridControl1, 0, 0)
+            Me.TableLayoutPanel1.Controls.Add(Me.GridControl_DetalleVenta, 0, 0)
             Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 135)
             Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -381,16 +398,20 @@
             Me.TableLayoutPanel1.Size = New System.Drawing.Size(699, 274)
             Me.TableLayoutPanel1.TabIndex = 2
             '
-            'GridControl1
+            'GridControl_DetalleVenta
             '
-            Me.GridControl1.DataSource = Me.ProductosDTOBindingSource
-            Me.GridControl1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.GridControl1.Location = New System.Drawing.Point(3, 3)
-            Me.GridControl1.MainView = Me.GridView1
-            Me.GridControl1.Name = "GridControl1"
-            Me.GridControl1.Size = New System.Drawing.Size(693, 268)
-            Me.GridControl1.TabIndex = 0
-            Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+            Me.GridControl_DetalleVenta.DataSource = Me.DetalleVentasDTOBindingSource
+            Me.GridControl_DetalleVenta.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.GridControl_DetalleVenta.Location = New System.Drawing.Point(3, 3)
+            Me.GridControl_DetalleVenta.MainView = Me.GridView1
+            Me.GridControl_DetalleVenta.Name = "GridControl_DetalleVenta"
+            Me.GridControl_DetalleVenta.Size = New System.Drawing.Size(693, 268)
+            Me.GridControl_DetalleVenta.TabIndex = 0
+            Me.GridControl_DetalleVenta.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+            '
+            'DetalleVentasDTOBindingSource
+            '
+            Me.DetalleVentasDTOBindingSource.DataSource = GetType(ARIAKA.EnStock.Win.Models.DetalleVentasDTO)
             '
             'GridView1
             '
@@ -400,67 +421,66 @@
             Me.GridView1.Appearance.HeaderPanel.Options.UseFont = True
             Me.GridView1.Appearance.Row.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.GridView1.Appearance.Row.Options.UseFont = True
-            Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.colMarcaID, Me.colMarca})
-            Me.GridView1.GridControl = Me.GridControl1
+            Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colFechaCreacion, Me.colProductoID, Me.colCantidad, Me.GridColumn2, Me.GridColumnPrecio, Me.colProducto, Me.colVentasID, Me.GridColumn1})
+            Me.GridView1.GridControl = Me.GridControl_DetalleVenta
             Me.GridView1.Name = "GridView1"
             Me.GridView1.OptionsView.ShowGroupPanel = False
             '
             'colID
             '
-            Me.colID.Caption = "ID"
             Me.colID.FieldName = "ID"
             Me.colID.Name = "colID"
             '
-            'colCodigo
+            'colFechaCreacion
             '
-            Me.colCodigo.Caption = "Codigo"
-            Me.colCodigo.FieldName = "Codigo"
-            Me.colCodigo.Name = "colCodigo"
+            Me.colFechaCreacion.FieldName = "FechaCreacion"
+            Me.colFechaCreacion.Name = "colFechaCreacion"
             '
-            'colNombre
+            'colProductoID
             '
-            Me.colNombre.Caption = "Nombre"
-            Me.colNombre.FieldName = "Nombre"
-            Me.colNombre.Name = "colNombre"
-            Me.colNombre.Visible = True
-            Me.colNombre.VisibleIndex = 0
+            Me.colProductoID.FieldName = "ProductoID"
+            Me.colProductoID.Name = "colProductoID"
             '
-            'colTalla
+            'colCantidad
             '
-            Me.colTalla.Caption = "Talla"
-            Me.colTalla.FieldName = "Talla"
-            Me.colTalla.Name = "colTalla"
-            Me.colTalla.Visible = True
-            Me.colTalla.VisibleIndex = 2
+            Me.colCantidad.Caption = "Cantidad"
+            Me.colCantidad.FieldName = "Cantidad"
+            Me.colCantidad.Name = "colCantidad"
+            Me.colCantidad.Visible = True
+            Me.colCantidad.VisibleIndex = 2
             '
-            'colPrecio
+            'GridColumn2
             '
-            Me.colPrecio.Caption = "Precio"
-            Me.colPrecio.FieldName = "Precio"
-            Me.colPrecio.Name = "colPrecio"
-            Me.colPrecio.Visible = True
-            Me.colPrecio.VisibleIndex = 4
+            Me.GridColumn2.Caption = "Talla"
+            Me.GridColumn2.FieldName = "Producto.Talla"
+            Me.GridColumn2.Name = "GridColumn2"
+            Me.GridColumn2.Visible = True
+            Me.GridColumn2.VisibleIndex = 1
             '
-            'colStock
+            'GridColumnPrecio
             '
-            Me.colStock.Caption = "Cantidad"
-            Me.colStock.FieldName = "Stock"
-            Me.colStock.Name = "colStock"
-            Me.colStock.Visible = True
-            Me.colStock.VisibleIndex = 3
+            Me.GridColumnPrecio.Caption = "Precio"
+            Me.GridColumnPrecio.FieldName = "Producto.Precio"
+            Me.GridColumnPrecio.Name = "GridColumnPrecio"
+            Me.GridColumnPrecio.Visible = True
+            Me.GridColumnPrecio.VisibleIndex = 3
             '
-            'colMarcaID
+            'colProducto
             '
-            Me.colMarcaID.FieldName = "MarcaID"
-            Me.colMarcaID.Name = "colMarcaID"
+            Me.colProducto.FieldName = "Producto.Nombre"
+            Me.colProducto.Name = "colProducto"
+            Me.colProducto.Visible = True
+            Me.colProducto.VisibleIndex = 0
             '
-            'colMarca
+            'colVentasID
             '
-            Me.colMarca.Caption = "Marca"
-            Me.colMarca.FieldName = "Marca.Nombre"
-            Me.colMarca.Name = "colMarca"
-            Me.colMarca.Visible = True
-            Me.colMarca.VisibleIndex = 1
+            Me.colVentasID.FieldName = "VentasID"
+            Me.colVentasID.Name = "colVentasID"
+            '
+            'GridColumn1
+            '
+            Me.GridColumn1.FieldName = "Marca.Nombre"
+            Me.GridColumn1.Name = "GridColumn1"
             '
             'VentasControl
             '
@@ -482,7 +502,8 @@
             CType(Me.ProductosDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.SearchLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TableLayoutPanel1.ResumeLayout(False)
-            CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridControl_DetalleVenta, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DetalleVentasDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
@@ -500,17 +521,9 @@
         Friend WithEvents LabelControl_Fecha_text As DevExpress.XtraEditors.LabelControl
         Friend WithEvents DateTimePicker_Fecha As DateTimePicker
         Friend WithEvents TextEdit_Venta_Numero As DevExpress.XtraEditors.TextEdit
-        Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+        Friend WithEvents GridControl_DetalleVenta As DevExpress.XtraGrid.GridControl
         Friend WithEvents ProductosDTOBindingSource As BindingSource
         Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-        Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colTalla As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colPrecio As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colStock As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colMarcaID As DevExpress.XtraGrid.Columns.GridColumn
-        Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents TableLayoutPanel_VentaFecha As TableLayoutPanel
         Friend WithEvents SearchLookUpEdit_Productos As DevExpress.XtraEditors.SearchLookUpEdit
         Friend WithEvents SearchLookUpEdit1View As DevExpress.XtraGrid.Views.Grid.GridView
@@ -526,5 +539,16 @@
         Friend WithEvents colStock1 As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarcaID1 As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarca1 As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents LabelControl_Productos_text As DevExpress.XtraEditors.LabelControl
+        Friend WithEvents DetalleVentasDTOBindingSource As BindingSource
+        Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents colFechaCreacion As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents colProductoID As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents colCantidad As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents GridColumnPrecio As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents colVentasID As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     End Class
 End Namespace

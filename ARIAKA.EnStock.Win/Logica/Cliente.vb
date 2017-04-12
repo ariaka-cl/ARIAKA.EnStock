@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Forms
+﻿Imports System.Linq
+Imports System.Windows.Forms
 Imports ARIAKA.EnStock.Data
 Namespace Logica
     Public Class Cliente
@@ -63,8 +64,8 @@ Namespace Logica
                 Dim listProductosDto As New List(Of Models.ProductosDTO)
                 For Each produ As Productos In listProductos
 
-                    Dim marcaDto As New Models.MarcaDTO With {.ID = produ.MarcaID,
-                        .Nombre = listMarca.Where(Function(m) m.ID = produ.MarcaID).
+                    Dim marcaDto As New Models.MarcaDTO With {.ID = CInt(produ.MarcaID),
+                        .Nombre = listMarca.Where(Function(m) CBool(m.ID = produ.MarcaID)).
                         Select(Function(c) c.Nombre).SingleOrDefault()}
 
                     listProductosDto.Add(New Models.ProductosDTO With {.ID = produ.ID,
@@ -123,26 +124,85 @@ Namespace Logica
             End Try
         End Function
 
-        'Public Function GetProductos() As List(Of Models.ProductosDTO)
-        '    Dim db As New EnStockContext
-        '    Try
-        '        Dim listProductos As List(Of Productos) = db.Productos.ToList()
-        '        Dim listProductosDto As New List(Of Models.ProductosDTO)
-        '        For Each producto As Productos In listProductos
-        '            listProductosDto.Add(New Models.ProductosDTO With {.ID = producto.ID, .Nombre = producto.Nombre,
-        '                                                                .MarcaID = producto.MarcaID, .Codigo = producto.Codigo,
-        '                                                                .Precio = producto.Precio, .Stock = producto.Stock,
-        '                                                                .Marca = New Marca With {.}})
-        '        Next
-        '        Return listProductosDto
-        '    Catch ex As Exception
-        '        MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error lista productos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '        Return New List(Of Models.ProductosDTO)
-        '    Finally
-        '        db.Dispose()
-        '    End Try
-        'End Function
+        Public Function GuardarDetalleVenta(ventaDetalles As List(Of Models.DetalleVentasDTO), ventaID As Integer) As List(Of Models.DetalleVentasDTO)
+            Dim db As New EnStockContext
+            Try
+                For Each detalle As Models.DetalleVentasDTO In ventaDetalles
+                    Dim detalleBD As New Data.DetalleVentas With {.VentasID = ventaID,
+                                                                  .FechaCreacion = Date.Now.Date,
+                                                                  .Cantidad = detalle.Cantidad,
+                                                                  .ProductoID = detalle.ProductoID}
+                    db.DetalleVentas.Add(detalleBD)
+                Next
+                db.SaveChanges()
+                Dim listVentaDetalle As List(Of Data.DetalleVentas) = db.DetalleVentas.Where(Function(vd) CBool(vd.VentasID = ventaID)).ToList()
+                Dim listProducts As List(Of Productos) = db.Productos.ToList()
+                Dim listMarca As List(Of Marca) = db.Marca.ToList()
+                Dim listVentaDetalleDto As New List(Of Models.DetalleVentasDTO)
+                For Each mdetalle As Data.DetalleVentas In listVentaDetalle
+                    Dim precio As Integer = CInt(listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Precio).SingleOrDefault())
+                    precio = CInt(precio * mdetalle.Cantidad)
+                    Dim prod As New Models.ProductosDTO With {.ID = CInt(mdetalle.ProductoID),
+                        .Nombre = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Nombre).SingleOrDefault(),
+                        .Precio = precio,
+                        .Codigo = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Codigo).SingleOrDefault(),
+                        .Stock = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Stock).SingleOrDefault(),
+                        .Talla = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Talla).SingleOrDefault(),
+                        .MarcaID = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.MarcaID).SingleOrDefault(),
+                        .Marca = New Models.MarcaDTO With {.ID = CInt(mdetalle.Producto.MarcaID),
+                                                             .Nombre = listMarca.Where(Function(c) CBool(c.ID = mdetalle.Producto.MarcaID)) _
+                                                             .Select(Function(c) c.Nombre).SingleOrDefault()}}
+                    listVentaDetalleDto.Add(New Models.DetalleVentasDTO With {.ID = mdetalle.ID,
+                                                                           .VentasID = ventaID,
+                                                                           .Cantidad = mdetalle.Cantidad,
+                                                                           .ProductoID = mdetalle.ProductoID,
+                                                                           .Producto = prod})
+                Next
 
+                Return listVentaDetalleDto
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Agregar Productos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New List(Of Models.DetalleVentasDTO)
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+
+        Public Function GuardarVenta(ventaModel As Models.VentasDTO) As Models.VentasDTO
+            Dim db As New EnStockContext
+            Try
+                Dim venta As New Ventas With {.FechaCreacion = ventaModel.FechaCreacion, .Total = ventaModel.Total}
+                db.Ventas.Add(venta)
+                db.SaveChanges()
+                ventaModel.ID = venta.ID
+                Return ventaModel
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Registrar Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New Models.VentasDTO
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+        Public Function GetVentas(fInicio As Date, fFin As Date) As List(Of Models.VentasDTO)
+            Dim db As New EnStockContext
+            Try
+                Dim listVentas As List(Of Ventas) = db.Ventas.Where(Function(v) CBool(v.FechaCreacion >= fInicio And v.FechaCreacion <= fFin)).ToList()
+                Dim listVentasDto As New List(Of Models.VentasDTO)
+                For Each venta As Ventas In listVentas
+                    listVentasDto.Add(New Models.VentasDTO With {.ID = venta.ID,
+                                                                  .FechaCreacion = venta.FechaCreacion,
+                                                                  .Total = venta.Total})
+                Next
+                Return listVentasDto
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Registrar Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New List(Of Models.VentasDTO)
+            Finally
+                db.Dispose()
+            End Try
+        End Function
 
     End Class
 End Namespace

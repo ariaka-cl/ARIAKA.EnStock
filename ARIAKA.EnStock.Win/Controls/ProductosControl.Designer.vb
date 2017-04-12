@@ -20,9 +20,10 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.GridControl_Producto = New DevExpress.XtraGrid.GridControl()
-            Me.ProductoDTOBindingSource = New System.Windows.Forms.BindingSource()
-            Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+            Me.ProductoDTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.GridView_Productos = New DevExpress.XtraGrid.Views.Grid.GridView()
             Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -34,7 +35,7 @@
             Me.TableLayoutPanel_Container = New System.Windows.Forms.TableLayoutPanel()
             CType(Me.GridControl_Producto, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.ProductoDTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridView_Productos, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TableLayoutPanel_Container.SuspendLayout()
             Me.SuspendLayout()
             '
@@ -43,23 +44,24 @@
             Me.GridControl_Producto.DataSource = Me.ProductoDTOBindingSource
             Me.GridControl_Producto.Dock = System.Windows.Forms.DockStyle.Fill
             Me.GridControl_Producto.Location = New System.Drawing.Point(3, 3)
-            Me.GridControl_Producto.MainView = Me.GridView1
+            Me.GridControl_Producto.MainView = Me.GridView_Productos
             Me.GridControl_Producto.Name = "GridControl_Producto"
             Me.GridControl_Producto.Size = New System.Drawing.Size(735, 373)
             Me.GridControl_Producto.TabIndex = 0
-            Me.GridControl_Producto.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+            Me.GridControl_Producto.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_Productos})
             '
             'ProductoDTOBindingSource
             '
             Me.ProductoDTOBindingSource.DataSource = GetType(ARIAKA.EnStock.Win.Models.ProductosDTO)
             '
-            'GridView1
+            'GridView_Productos
             '
-            Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.colMarcaID, Me.colMarca})
-            Me.GridView1.GridControl = Me.GridControl_Producto
-            Me.GridView1.Name = "GridView1"
-            Me.GridView1.OptionsBehavior.Editable = False
-            Me.GridView1.OptionsView.ShowGroupPanel = False
+            Me.GridView_Productos.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.colMarcaID, Me.colMarca})
+            Me.GridView_Productos.GridControl = Me.GridControl_Producto
+            Me.GridView_Productos.Name = "GridView_Productos"
+            Me.GridView_Productos.OptionsBehavior.Editable = False
+            Me.GridView_Productos.OptionsView.ShowAutoFilterRow = True
+            Me.GridView_Productos.OptionsView.ShowGroupPanel = False
             '
             'colID
             '
@@ -114,7 +116,7 @@
             '
             'colMarca
             '
-            Me.colMarca.Caption = "Marca"
+            Me.colMarca.Caption = "Proveedores"
             Me.colMarca.FieldName = "Marca.Nombre"
             Me.colMarca.Name = "colMarca"
             Me.colMarca.Visible = True
@@ -142,14 +144,14 @@
             Me.Size = New System.Drawing.Size(741, 379)
             CType(Me.GridControl_Producto, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.ProductoDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridView_Productos, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TableLayoutPanel_Container.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
 
         Friend WithEvents GridControl_Producto As DevExpress.XtraGrid.GridControl
-        Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+        Friend WithEvents GridView_Productos As DevExpress.XtraGrid.Views.Grid.GridView
         Friend WithEvents ProductoDTOBindingSource As Windows.Forms.BindingSource
         Friend WithEvents TableLayoutPanel_Container As Windows.Forms.TableLayoutPanel
         Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn

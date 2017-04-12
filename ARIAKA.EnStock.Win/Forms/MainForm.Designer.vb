@@ -133,7 +133,7 @@
             Me.SimpleButton_AddSale.Name = "SimpleButton_AddSale"
             Me.SimpleButton_AddSale.Size = New System.Drawing.Size(114, 60)
             Me.SimpleButton_AddSale.TabIndex = 0
-            Me.SimpleButton_AddSale.Text = "Ventas"
+            Me.SimpleButton_AddSale.Text = "Venta"
             '
             'PictureBox1
             '
@@ -215,7 +215,7 @@
             Me.SimpleButton_Marca.Name = "SimpleButton_Marca"
             Me.SimpleButton_Marca.Size = New System.Drawing.Size(192, 99)
             Me.SimpleButton_Marca.TabIndex = 2
-            Me.SimpleButton_Marca.Text = "Marca"
+            Me.SimpleButton_Marca.Text = "Proveedores"
             '
             'MainForm
             '
@@ -227,9 +227,10 @@
             Me.ClientSize = New System.Drawing.Size(1053, 651)
             Me.Controls.Add(Me.TableLayoutPanel_Main)
             Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow
+            Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.Name = "MainForm"
             Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-            Me.Text = "EnStock"
+            Me.Text = "EnStock *** BABY SHEA ***"
             Me.TableLayoutPanel_Main.ResumeLayout(False)
             Me.TableLayoutPanel_Main.PerformLayout()
             Me.TableLayoutPanel_Dash.ResumeLayout(False)
