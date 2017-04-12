@@ -140,25 +140,29 @@ Namespace Logica
                 Dim listMarca As List(Of Marca) = db.Marca.ToList()
                 Dim listVentaDetalleDto As New List(Of Models.DetalleVentasDTO)
                 For Each mdetalle As Data.DetalleVentas In listVentaDetalle
-                    Dim precio As Integer = CInt(listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Precio).SingleOrDefault())
+                    Dim producto As Productos = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).SingleOrDefault()
+                    Dim precio As Integer = CInt(producto.Precio)
                     precio = CInt(precio * mdetalle.Cantidad)
                     Dim prod As New Models.ProductosDTO With {.ID = CInt(mdetalle.ProductoID),
-                        .Nombre = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Nombre).SingleOrDefault(),
-                        .Precio = precio,
-                        .Codigo = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Codigo).SingleOrDefault(),
-                        .Stock = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Stock).SingleOrDefault(),
-                        .Talla = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.Talla).SingleOrDefault(),
-                        .MarcaID = listProducts.Where(Function(p) CBool(p.ID = mdetalle.ProductoID)).Select(Function(p) p.MarcaID).SingleOrDefault(),
-                        .Marca = New Models.MarcaDTO With {.ID = CInt(mdetalle.Producto.MarcaID),
-                                                             .Nombre = listMarca.Where(Function(c) CBool(c.ID = mdetalle.Producto.MarcaID)) _
-                                                             .Select(Function(c) c.Nombre).SingleOrDefault()}}
+                                                              .Nombre = producto.Nombre,
+                                                              .Precio = precio,
+                                                              .Talla = producto.Talla,
+                                                              .Stock = producto.Stock - mdetalle.Cantidad,
+                                                              .Codigo = producto.Codigo,
+                                                              .MarcaID = producto.MarcaID,
+                                                              .Marca = New Models.MarcaDTO With {.ID = CInt(mdetalle.Producto.MarcaID),
+                                                                                                 .Nombre = listMarca.Where(Function(c) CBool(c.ID = mdetalle.Producto.MarcaID)) _
+                                                                                                                    .Select(Function(c) c.Nombre).SingleOrDefault()}}
+
+
                     listVentaDetalleDto.Add(New Models.DetalleVentasDTO With {.ID = mdetalle.ID,
                                                                            .VentasID = ventaID,
                                                                            .Cantidad = mdetalle.Cantidad,
                                                                            .ProductoID = mdetalle.ProductoID,
                                                                            .Producto = prod})
+                    producto.Stock = producto.Stock - mdetalle.Cantidad
                 Next
-
+                db.SaveChanges()
                 Return listVentaDetalleDto
             Catch ex As Exception
                 MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error Agregar Productos", MessageBoxButtons.OK, MessageBoxIcon.Error)

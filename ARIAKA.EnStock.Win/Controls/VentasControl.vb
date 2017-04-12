@@ -17,6 +17,7 @@ Namespace Controls
             PopulateProductos()
         End Sub
         Private Sub PopulateProductos()
+            SearchLookUpEdit_Productos.DataBindings.Clear()
             Me.SearchLookUpEdit_Productos.Properties.DataSource = _cliente.GetProduc()
         End Sub
 
@@ -122,6 +123,7 @@ Namespace Controls
                 Me.GridView1.RefreshEditor(True)
             End If
             MessageBox.Show("Se guardaron con éxito los registros", "Guardar Venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            PopulateProductos()
         End Sub
     End Class
 End Namespace
