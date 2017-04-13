@@ -23,15 +23,15 @@
             Me.components = New System.ComponentModel.Container()
             Me.TableLayoutPanel_Ventas = New System.Windows.Forms.TableLayoutPanel()
             Me.GridControl_Ventas = New DevExpress.XtraGrid.GridControl()
-            Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
             Me.VentasDTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
             Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colFechaCreacion = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.TableLayoutPanel_Ventas.SuspendLayout()
             CType(Me.GridControl_Ventas, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.VentasDTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'TableLayoutPanel_Ventas
@@ -58,16 +58,16 @@
             Me.GridControl_Ventas.TabIndex = 0
             Me.GridControl_Ventas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
             '
+            'VentasDTOBindingSource
+            '
+            Me.VentasDTOBindingSource.DataSource = GetType(ARIAKA.EnStock.Win.Models.VentasDTO)
+            '
             'GridView1
             '
             Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colFechaCreacion, Me.colTotal})
             Me.GridView1.GridControl = Me.GridControl_Ventas
             Me.GridView1.Name = "GridView1"
             Me.GridView1.OptionsView.ShowAutoFilterRow = True
-            '
-            'VentasDTOBindingSource
-            '
-            Me.VentasDTOBindingSource.DataSource = GetType(ARIAKA.EnStock.Win.Models.VentasDTO)
             '
             'colID
             '
@@ -101,8 +101,8 @@
             Me.Size = New System.Drawing.Size(711, 375)
             Me.TableLayoutPanel_Ventas.ResumeLayout(False)
             CType(Me.GridControl_Ventas, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.VentasDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub

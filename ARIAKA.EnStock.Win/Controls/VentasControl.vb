@@ -15,6 +15,9 @@ Namespace Controls
 
         Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             PopulateProductos()
+            If _ventaID <> 0 Then
+                PopulateDetalleVentas()
+            End If
         End Sub
         Private Sub PopulateProductos()
             SearchLookUpEdit_Productos.DataBindings.Clear()
@@ -125,5 +128,11 @@ Namespace Controls
             MessageBox.Show("Se guardaron con éxito los registros", "Guardar Venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
             PopulateProductos()
         End Sub
+
+        Public Sub PopulateDetalleVentas()
+
+        End Sub
+
+
     End Class
 End Namespace
