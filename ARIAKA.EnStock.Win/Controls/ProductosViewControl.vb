@@ -40,6 +40,7 @@
             producto = _cliente.GuardarProductos(producto)
             Me.ProductosControl1.ProductoDTOBindingSource.Add(producto)
             Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
+            LimpiarCampos()
         End Sub
 
         Private Sub SimpleButton_Eliminar_Click(sender As Object, e As EventArgs) Handles SimpleButton_Eliminar.Click
@@ -48,6 +49,14 @@
             If id <> 0 Then _cliente.EliminarProducto(id)
             ProductosControl1.GridView_Productos.DeleteRow(ProductosControl1.GridView_Productos.FocusedRowHandle)
             Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
+        End Sub
+
+        Private Sub LimpiarCampos()
+            TextBox_Codigo.Clear()
+            TextBox_Nombre.Clear()
+            TextBox_Precio.Clear()
+            TextBox_Talla.Clear()
+            TextBox_Stock.Clear()
         End Sub
 
     End Class

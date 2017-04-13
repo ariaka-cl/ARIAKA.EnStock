@@ -127,6 +127,7 @@ Namespace Logica
         Public Function GuardarDetalleVenta(ventaDetalles As List(Of Models.DetalleVentasDTO), ventaID As Integer) As List(Of Models.DetalleVentasDTO)
             Dim db As New EnStockContext
             Try
+                Dim iDVentaDetalleOld As List(Of Integer) = db.DetalleVentas.Where(Function(vd) CBool(vd.VentasID = ventaID)).Select(Function(vd) vd.ID).ToList()
                 For Each detalle As Models.DetalleVentasDTO In ventaDetalles
                     Dim detalleBD As New Data.DetalleVentas With {.VentasID = ventaID,
                                                                   .FechaCreacion = Date.Now.Date,
@@ -147,7 +148,7 @@ Namespace Logica
                                                               .Nombre = producto.Nombre,
                                                               .Precio = precio,
                                                               .Talla = producto.Talla,
-                                                              .Stock = producto.Stock - mdetalle.Cantidad,
+                                                              .Stock = mdetalle.Cantidad,
                                                               .Codigo = producto.Codigo,
                                                               .MarcaID = producto.MarcaID,
                                                               .Marca = New Models.MarcaDTO With {.ID = CInt(mdetalle.Producto.MarcaID),
@@ -160,7 +161,11 @@ Namespace Logica
                                                                            .Cantidad = mdetalle.Cantidad,
                                                                            .ProductoID = mdetalle.ProductoID,
                                                                            .Producto = prod})
-                    producto.Stock = producto.Stock - mdetalle.Cantidad
+                    Dim expr As Integer = iDVentaDetalleOld.Find(Function(vd) vd = mdetalle.ID)
+                    If expr = 0 Then
+                        producto.Stock = producto.Stock - mdetalle.Cantidad
+                    End If
+
                 Next
                 db.SaveChanges()
                 Return listVentaDetalleDto

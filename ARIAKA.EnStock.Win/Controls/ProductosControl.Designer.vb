@@ -30,6 +30,7 @@
             Me.colTalla = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colPrecio = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colStock = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.GridColumn_Total = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colMarcaID = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colMarca = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.TableLayoutPanel_Container = New System.Windows.Forms.TableLayoutPanel()
@@ -56,12 +57,14 @@
             '
             'GridView_Productos
             '
-            Me.GridView_Productos.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.colMarcaID, Me.colMarca})
+            Me.GridView_Productos.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.GridColumn_Total, Me.colMarcaID, Me.colMarca})
             Me.GridView_Productos.GridControl = Me.GridControl_Producto
+            Me.GridView_Productos.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Precio", Me.GridColumn_Total, "(Precio: SUMA={0:#.##})")})
             Me.GridView_Productos.Name = "GridView_Productos"
             Me.GridView_Productos.OptionsBehavior.Editable = False
+            Me.GridView_Productos.OptionsPrint.PrintFilterInfo = True
             Me.GridView_Productos.OptionsView.ShowAutoFilterRow = True
-            Me.GridView_Productos.OptionsView.ShowGroupPanel = False
+            Me.GridView_Productos.OptionsView.ShowFooter = True
             '
             'colID
             '
@@ -76,6 +79,7 @@
             Me.colCodigo.Name = "colCodigo"
             Me.colCodigo.Visible = True
             Me.colCodigo.VisibleIndex = 0
+            Me.colCodigo.Width = 63
             '
             'colNombre
             '
@@ -84,6 +88,7 @@
             Me.colNombre.Name = "colNombre"
             Me.colNombre.Visible = True
             Me.colNombre.VisibleIndex = 1
+            Me.colNombre.Width = 158
             '
             'colTalla
             '
@@ -92,6 +97,7 @@
             Me.colTalla.Name = "colTalla"
             Me.colTalla.Visible = True
             Me.colTalla.VisibleIndex = 2
+            Me.colTalla.Width = 60
             '
             'colPrecio
             '
@@ -100,6 +106,7 @@
             Me.colPrecio.Name = "colPrecio"
             Me.colPrecio.Visible = True
             Me.colPrecio.VisibleIndex = 3
+            Me.colPrecio.Width = 81
             '
             'colStock
             '
@@ -108,6 +115,21 @@
             Me.colStock.Name = "colStock"
             Me.colStock.Visible = True
             Me.colStock.VisibleIndex = 4
+            Me.colStock.Width = 81
+            '
+            'GridColumn_Total
+            '
+            Me.GridColumn_Total.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.GridColumn_Total.AppearanceCell.Options.UseFont = True
+            Me.GridColumn_Total.Caption = "Total"
+            Me.GridColumn_Total.FieldName = "GridColumn_Total"
+            Me.GridColumn_Total.Name = "GridColumn_Total"
+            Me.GridColumn_Total.ShowUnboundExpressionMenu = True
+            Me.GridColumn_Total.UnboundExpression = "[Precio] * [Stock]"
+            Me.GridColumn_Total.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
+            Me.GridColumn_Total.Visible = True
+            Me.GridColumn_Total.VisibleIndex = 5
+            Me.GridColumn_Total.Width = 72
             '
             'colMarcaID
             '
@@ -116,11 +138,12 @@
             '
             'colMarca
             '
-            Me.colMarca.Caption = "Proveedores"
+            Me.colMarca.Caption = "Proveedor"
             Me.colMarca.FieldName = "Marca.Nombre"
             Me.colMarca.Name = "colMarca"
             Me.colMarca.Visible = True
-            Me.colMarca.VisibleIndex = 5
+            Me.colMarca.VisibleIndex = 6
+            Me.colMarca.Width = 226
             '
             'TableLayoutPanel_Container
             '
@@ -162,5 +185,6 @@
         Friend WithEvents colStock As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarcaID As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents GridColumn_Total As DevExpress.XtraGrid.Columns.GridColumn
     End Class
 End Namespace
