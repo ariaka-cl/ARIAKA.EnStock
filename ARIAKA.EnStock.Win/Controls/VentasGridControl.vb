@@ -1,10 +1,11 @@
-﻿Imports DevExpress.XtraGrid.Views.Grid
+﻿Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Views.Grid
 
 Namespace Controls
     Public Class VentasGridControl
         Private Sub GridControl_Ventas_DoubleClick(sender As Object, e As EventArgs) Handles GridControl_Ventas.DoubleClick
 
-            Dim grid As GridView = TryCast(sender, GridView)
+            Dim grid As GridControl = CType(sender, GridControl)
             Dim mesaID As Integer = CType(TryCast(grid.DataSource, BindingSource).Current, Models.VentasDTO).ID
             If mesaID = Nothing Then
                 MessageBox.Show(String.Format("Fallo al obtener Comanda N°: {0}", mesaID), "Obtener Mesa", MessageBoxButtons.OK, MessageBoxIcon.Error)

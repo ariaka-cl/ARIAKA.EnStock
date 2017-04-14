@@ -213,5 +213,58 @@ Namespace Logica
             End Try
         End Function
 
+        Public Function GetOneVenta(ventaID As Integer) As Models.VentasDTO
+            Dim db As New EnStockContext
+            Try
+                Dim venta As Ventas = db.Ventas.Where(Function(v) v.ID = ventaID).SingleOrDefault()
+                Dim ventaDTO As New Models.VentasDTO
+                If venta Is Nothing Then Return ventaDTO
+                Dim listVentaDetalle As List(Of DetalleVentas) = db.DetalleVentas.Where(Function(dv) CBool(dv.VentasID = venta.ID)).ToList()
+                Dim listMarca As List(Of Marca) = db.Marca.ToList()
+                Dim listVentaDetalleDTO As New List(Of Models.DetalleVentasDTO)
+
+                If listVentaDetalle IsNot Nothing OrElse listVentaDetalle.Count > 0 Then
+                    Dim listProducts As List(Of Productos) = db.Productos.ToList()
+
+                    For Each ventaDetail As DetalleVentas In listVentaDetalle
+                        Dim producto As Productos = listProducts.Where(Function(p) CBool(p.ID = ventaDetail.ProductoID)).SingleOrDefault()
+                        Dim precio As Integer = CInt(producto.Precio)
+                        precio = CInt(precio * ventaDetail.Cantidad)
+                        Dim prod As New Models.ProductosDTO With {.ID = CInt(ventaDetail.ProductoID),
+                                                              .Nombre = producto.Nombre,
+                                                              .Precio = precio,
+                                                              .Talla = producto.Talla,
+                                                              .Stock = ventaDetail.Cantidad,
+                                                              .Codigo = producto.Codigo,
+                                                              .MarcaID = producto.MarcaID,
+                                                              .Marca = New Models.MarcaDTO With {.ID = CInt(ventaDetail.Producto.MarcaID),
+                                                                                                 .Nombre = listMarca.Where(Function(c) CBool(c.ID = ventaDetail.Producto.MarcaID)) _
+                                                                                                                    .Select(Function(c) c.Nombre).SingleOrDefault()}}
+                        listVentaDetalleDTO.Add(New Models.DetalleVentasDTO With
+                                               {.ID = ventaDetail.ID,
+                                               .VentasID = ventaDetail.VentasID.GetValueOrDefault,
+                                               .FechaCreacion = ventaDetail.FechaCreacion,
+                                               .ProductoID = ventaDetail.ProductoID,
+                                               .Cantidad = ventaDetail.Cantidad,
+                                               .Producto = prod})
+
+                    Next
+                End If
+                With ventaDTO
+                    .ID = venta.ID
+                    .FechaCreacion = venta.FechaCreacion
+                    .Total = venta.Total
+                    .ListaDetalleVenta = listVentaDetalleDTO
+                End With
+                Return ventaDTO
+
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error obtener Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return New Models.VentasDTO
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
     End Class
 End Namespace

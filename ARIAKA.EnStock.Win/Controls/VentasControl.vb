@@ -130,7 +130,20 @@ Namespace Controls
         End Sub
 
         Public Sub PopulateDetalleVentas()
-
+            Dim venta As Models.VentasDTO = _cliente.GetOneVenta(_ventaID)
+            Me.TextEdit_Venta_Numero.Text = venta.ID.ToString
+            Me.DateTimePicker_Fecha.Value = venta.FechaCreacion.Value.Date
+            Dim total As Integer = 0
+            If venta.ListaDetalleVenta IsNot Nothing Then
+                GridControl_DetalleVenta.DataBindings.Clear()
+                For i As Integer = 0 To venta.ListaDetalleVenta.Count - 1
+                    DetalleVentasDTOBindingSource.Add(venta.ListaDetalleVenta.Item(i))
+                    total = CInt(venta.ListaDetalleVenta.Item(i).Producto.Precio + total)
+                Next
+                Me.GridControl_DetalleVenta.DataSource = DetalleVentasDTOBindingSource.DataSource
+                Me.GridView1.RefreshEditor(True)
+            End If
+            Me.LabelControl_Total_Value.Text = total.ToString()
         End Sub
 
 
