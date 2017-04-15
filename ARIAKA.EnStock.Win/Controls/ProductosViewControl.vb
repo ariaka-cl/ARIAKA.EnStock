@@ -2,6 +2,16 @@
     Public Class ProductosViewControl
         Private Property _cliente As New Logica.Cliente
 
+        Private Property _productoID As Integer
+        Public Property ProductoID As Integer
+            Get
+                Return _productoID
+            End Get
+            Set(value As Integer)
+                _productoID = value
+            End Set
+        End Property
+
         Public Sub ProductosViewControl_Load() Handles MyBase.Load
             PopulateMarca()
             PopulateProductosGrid()
@@ -37,7 +47,15 @@
                                                           .Talla = talla,
                                                           .MarcaID = marcaId,
                                                           .Marca = New Models.MarcaDTO With {.ID = marcaId, .Nombre = cateNombre}}
+            If _productoID <> 0 Then
+                producto.ID = _productoID
+            End If
+
             producto = _cliente.GuardarProductos(producto)
+            If producto.ID = _productoID Then
+                'Me.ProductosControl1.ProductoDTOBindingSource.RemoveCurrent()
+                ProductosControl1.GridView_Productos.DeleteRow(ProductosControl1.GridView_Productos.FocusedRowHandle)
+            End If
             Me.ProductosControl1.ProductoDTOBindingSource.Add(producto)
             Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
             LimpiarCampos()

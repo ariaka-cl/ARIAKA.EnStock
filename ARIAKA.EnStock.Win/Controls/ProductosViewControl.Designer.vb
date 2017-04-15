@@ -54,7 +54,7 @@
             Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
             Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
             Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121.0!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123.0!))
             Me.TableLayoutPanel1.Controls.Add(Me.TextBox_Nombre, 0, 1)
             Me.TableLayoutPanel1.Controls.Add(Me.SimpleButton_Eliminar, 7, 0)
             Me.TableLayoutPanel1.Controls.Add(Me.LabelControl1, 0, 0)
@@ -81,7 +81,7 @@
             '
             'TextBox_Nombre
             '
-            Me.TextBox_Nombre.Anchor = System.Windows.Forms.AnchorStyles.Left
+            Me.TextBox_Nombre.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TextBox_Nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TextBox_Nombre.Location = New System.Drawing.Point(73, 52)
             Me.TextBox_Nombre.Name = "TextBox_Nombre"
@@ -137,7 +137,7 @@
             '
             'TextBox_Codigo
             '
-            Me.TextBox_Codigo.Anchor = System.Windows.Forms.AnchorStyles.Left
+            Me.TextBox_Codigo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TextBox_Codigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TextBox_Codigo.Location = New System.Drawing.Point(72, 9)
             Me.TextBox_Codigo.Margin = New System.Windows.Forms.Padding(2)
@@ -147,7 +147,7 @@
             '
             'TextBox_Precio
             '
-            Me.TextBox_Precio.Anchor = System.Windows.Forms.AnchorStyles.Left
+            Me.TextBox_Precio.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TextBox_Precio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.TextBox_Precio.Location = New System.Drawing.Point(300, 52)
             Me.TextBox_Precio.Margin = New System.Windows.Forms.Padding(2)
@@ -171,7 +171,7 @@
             '
             'ComboBox_Marca
             '
-            Me.ComboBox_Marca.Anchor = System.Windows.Forms.AnchorStyles.Left
+            Me.ComboBox_Marca.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.ComboBox_Marca.DataSource = Me.MarcaDTOBindingSource
             Me.ComboBox_Marca.DisplayMember = "Nombre"
             Me.ComboBox_Marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

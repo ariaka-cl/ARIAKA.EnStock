@@ -30,12 +30,17 @@ Namespace Controls
             Dim detalleVentaDto As Models.DetalleVentasDTO = CType(Me.DetalleVentasDTOBindingSource.Current, Models.DetalleVentasDTO)
             Me.GridView1.DeleteRow(Me.GridView1.FocusedRowHandle)
             RestarTotal(detalleVentaDto.Producto.Precio)
+            If _ventaID <> 0 Then
+                Dim id As Integer = detalleVentaDto.ID
+                Dim totalVenta As Integer = CInt(LabelControl_Total_Value.Text)
+                If id <> 0 Then _cliente.EliminarDetalleVenta(detalleVentaDto, totalVenta)
+            End If
             Me.GridView1.RefreshEditor(True)
         End Sub
 
         Private Sub SimpleButton_Add_Click(sender As Object, e As EventArgs) Handles SimpleButton_Add.Click
             If Me.SearchLookUpEdit_Productos.EditValue Is Nothing OrElse Me.SearchLookUpEdit_Productos.EditValue.ToString.Contains("Buscar") Then
-                MessageBox.Show("Debe seleccionar un producto")
+                MessageBox.Show("Debe seleccionar un producto", "Agregar Producto Venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return
             End If
 
@@ -91,10 +96,11 @@ Namespace Controls
                 Dim listDetalleNuevo As List(Of Models.DetalleVentasDTO) = lisDetalle.Where(Function(v) CBool(v.VentasID = 0)).ToList()
                 lisDetalle = Nothing
                 If listDetalleNuevo Is Nothing OrElse listDetalleNuevo.Count = 0 Then
-                    MessageBox.Show("No hay datos para guardar", "Guardar Mesa")
+                    MessageBox.Show("No hay datos para guardar", "Guardar Ventas")
                     Return
                 End If
-
+                Dim venta As New Models.VentasDTO With {.FechaCreacion = Me.DateTimePicker_Fecha.Value.Date, .Total = CInt(LabelControl_Total_Value.Text), .ID = _ventaID}
+                venta = _cliente.GuardarVenta(venta)
                 lisDetalle = _cliente.GuardarDetalleVenta(listDetalleNuevo, _ventaID)
                 If lisDetalle IsNot Nothing Then
                     DetalleVentasDTOBindingSource.Clear()
