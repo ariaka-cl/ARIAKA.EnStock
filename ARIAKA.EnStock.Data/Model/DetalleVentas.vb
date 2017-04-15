@@ -14,6 +14,7 @@ Partial Public Class DetalleVentas
     Public Property Cantidad As Integer?
 
     Public Property ProductoID As Integer?
+    Public Property Producto As Productos
 
     Public Property VentasID As Integer?
 End Class

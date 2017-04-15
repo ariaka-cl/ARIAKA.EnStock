@@ -75,8 +75,6 @@
             '
             Me.colID.FieldName = "ID"
             Me.colID.Name = "colID"
-            Me.colID.Visible = True
-            Me.colID.VisibleIndex = 0
             Me.colID.Width = 30
             '
             'colNombre
@@ -84,7 +82,7 @@
             Me.colNombre.FieldName = "Nombre"
             Me.colNombre.Name = "colNombre"
             Me.colNombre.Visible = True
-            Me.colNombre.VisibleIndex = 1
+            Me.colNombre.VisibleIndex = 0
             Me.colNombre.Width = 447
             '
             'MarcaControl

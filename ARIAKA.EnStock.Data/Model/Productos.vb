@@ -22,4 +22,5 @@ Partial Public Class Productos
     Public Property Stock As Integer?
 
     Public Property MarcaID As Integer?
+    Public Property Marca As Marca
 End Class

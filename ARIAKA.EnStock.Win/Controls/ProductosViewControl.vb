@@ -11,7 +11,7 @@
             Dim listProductDto As List(Of Models.ProductosDTO) = _cliente.GetProduc()
             If listProductDto IsNot Nothing Then
                 Me.ProductosControl1.ProductoDTOBindingSource.DataSource = listProductDto
-                Me.ProductosControl1.GridView1.RefreshEditor(True)
+                Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
             End If
 
         End Sub
@@ -39,15 +39,24 @@
                                                           .Marca = New Models.MarcaDTO With {.ID = marcaId, .Nombre = cateNombre}}
             producto = _cliente.GuardarProductos(producto)
             Me.ProductosControl1.ProductoDTOBindingSource.Add(producto)
-            Me.ProductosControl1.GridView1.RefreshEditor(True)
+            Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
+            LimpiarCampos()
         End Sub
 
         Private Sub SimpleButton_Eliminar_Click(sender As Object, e As EventArgs) Handles SimpleButton_Eliminar.Click
             Dim productoDto As Models.ProductosDTO = CType(ProductosControl1.ProductoDTOBindingSource.Current, Models.ProductosDTO)
             Dim id As Integer = productoDto.ID
             If id <> 0 Then _cliente.EliminarProducto(id)
-            ProductosControl1.GridView1.DeleteRow(ProductosControl1.GridView1.FocusedRowHandle)
-            Me.ProductosControl1.GridView1.RefreshEditor(True)
+            ProductosControl1.GridView_Productos.DeleteRow(ProductosControl1.GridView_Productos.FocusedRowHandle)
+            Me.ProductosControl1.GridView_Productos.RefreshEditor(True)
+        End Sub
+
+        Private Sub LimpiarCampos()
+            TextBox_Codigo.Clear()
+            TextBox_Nombre.Clear()
+            TextBox_Precio.Clear()
+            TextBox_Talla.Clear()
+            TextBox_Stock.Clear()
         End Sub
 
     End Class

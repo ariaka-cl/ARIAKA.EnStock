@@ -20,21 +20,23 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.GridControl_Producto = New DevExpress.XtraGrid.GridControl()
-            Me.ProductoDTOBindingSource = New System.Windows.Forms.BindingSource()
-            Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+            Me.ProductoDTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.GridView_Productos = New DevExpress.XtraGrid.Views.Grid.GridView()
             Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colTalla = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colPrecio = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colStock = New DevExpress.XtraGrid.Columns.GridColumn()
+            Me.GridColumn_Total = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colMarcaID = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.colMarca = New DevExpress.XtraGrid.Columns.GridColumn()
             Me.TableLayoutPanel_Container = New System.Windows.Forms.TableLayoutPanel()
             CType(Me.GridControl_Producto, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.ProductoDTOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.GridView_Productos, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TableLayoutPanel_Container.SuspendLayout()
             Me.SuspendLayout()
             '
@@ -43,23 +45,26 @@
             Me.GridControl_Producto.DataSource = Me.ProductoDTOBindingSource
             Me.GridControl_Producto.Dock = System.Windows.Forms.DockStyle.Fill
             Me.GridControl_Producto.Location = New System.Drawing.Point(3, 3)
-            Me.GridControl_Producto.MainView = Me.GridView1
+            Me.GridControl_Producto.MainView = Me.GridView_Productos
             Me.GridControl_Producto.Name = "GridControl_Producto"
             Me.GridControl_Producto.Size = New System.Drawing.Size(735, 373)
             Me.GridControl_Producto.TabIndex = 0
-            Me.GridControl_Producto.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+            Me.GridControl_Producto.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_Productos})
             '
             'ProductoDTOBindingSource
             '
             Me.ProductoDTOBindingSource.DataSource = GetType(ARIAKA.EnStock.Win.Models.ProductosDTO)
             '
-            'GridView1
+            'GridView_Productos
             '
-            Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.colMarcaID, Me.colMarca})
-            Me.GridView1.GridControl = Me.GridControl_Producto
-            Me.GridView1.Name = "GridView1"
-            Me.GridView1.OptionsBehavior.Editable = False
-            Me.GridView1.OptionsView.ShowGroupPanel = False
+            Me.GridView_Productos.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCodigo, Me.colNombre, Me.colTalla, Me.colPrecio, Me.colStock, Me.GridColumn_Total, Me.colMarcaID, Me.colMarca})
+            Me.GridView_Productos.GridControl = Me.GridControl_Producto
+            Me.GridView_Productos.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Precio", Me.GridColumn_Total, "(Precio: SUMA={0:#.##})")})
+            Me.GridView_Productos.Name = "GridView_Productos"
+            Me.GridView_Productos.OptionsBehavior.Editable = False
+            Me.GridView_Productos.OptionsPrint.PrintFilterInfo = True
+            Me.GridView_Productos.OptionsView.ShowAutoFilterRow = True
+            Me.GridView_Productos.OptionsView.ShowFooter = True
             '
             'colID
             '
@@ -74,6 +79,7 @@
             Me.colCodigo.Name = "colCodigo"
             Me.colCodigo.Visible = True
             Me.colCodigo.VisibleIndex = 0
+            Me.colCodigo.Width = 63
             '
             'colNombre
             '
@@ -82,6 +88,7 @@
             Me.colNombre.Name = "colNombre"
             Me.colNombre.Visible = True
             Me.colNombre.VisibleIndex = 1
+            Me.colNombre.Width = 158
             '
             'colTalla
             '
@@ -90,6 +97,7 @@
             Me.colTalla.Name = "colTalla"
             Me.colTalla.Visible = True
             Me.colTalla.VisibleIndex = 2
+            Me.colTalla.Width = 60
             '
             'colPrecio
             '
@@ -98,6 +106,7 @@
             Me.colPrecio.Name = "colPrecio"
             Me.colPrecio.Visible = True
             Me.colPrecio.VisibleIndex = 3
+            Me.colPrecio.Width = 81
             '
             'colStock
             '
@@ -106,6 +115,21 @@
             Me.colStock.Name = "colStock"
             Me.colStock.Visible = True
             Me.colStock.VisibleIndex = 4
+            Me.colStock.Width = 81
+            '
+            'GridColumn_Total
+            '
+            Me.GridColumn_Total.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.GridColumn_Total.AppearanceCell.Options.UseFont = True
+            Me.GridColumn_Total.Caption = "Total"
+            Me.GridColumn_Total.FieldName = "GridColumn_Total"
+            Me.GridColumn_Total.Name = "GridColumn_Total"
+            Me.GridColumn_Total.ShowUnboundExpressionMenu = True
+            Me.GridColumn_Total.UnboundExpression = "[Precio] * [Stock]"
+            Me.GridColumn_Total.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
+            Me.GridColumn_Total.Visible = True
+            Me.GridColumn_Total.VisibleIndex = 5
+            Me.GridColumn_Total.Width = 72
             '
             'colMarcaID
             '
@@ -114,11 +138,12 @@
             '
             'colMarca
             '
-            Me.colMarca.Caption = "Marca"
+            Me.colMarca.Caption = "Proveedor"
             Me.colMarca.FieldName = "Marca.Nombre"
             Me.colMarca.Name = "colMarca"
             Me.colMarca.Visible = True
-            Me.colMarca.VisibleIndex = 5
+            Me.colMarca.VisibleIndex = 6
+            Me.colMarca.Width = 226
             '
             'TableLayoutPanel_Container
             '
@@ -142,14 +167,14 @@
             Me.Size = New System.Drawing.Size(741, 379)
             CType(Me.GridControl_Producto, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.ProductoDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GridView_Productos, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TableLayoutPanel_Container.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
 
         Friend WithEvents GridControl_Producto As DevExpress.XtraGrid.GridControl
-        Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+        Friend WithEvents GridView_Productos As DevExpress.XtraGrid.Views.Grid.GridView
         Friend WithEvents ProductoDTOBindingSource As Windows.Forms.BindingSource
         Friend WithEvents TableLayoutPanel_Container As Windows.Forms.TableLayoutPanel
         Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
@@ -160,5 +185,6 @@
         Friend WithEvents colStock As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarcaID As DevExpress.XtraGrid.Columns.GridColumn
         Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn
+        Friend WithEvents GridColumn_Total As DevExpress.XtraGrid.Columns.GridColumn
     End Class
 End Namespace

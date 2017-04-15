@@ -20,6 +20,7 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
             Me.TextBox_Nombre = New System.Windows.Forms.TextBox()
             Me.SimpleButton_Eliminar = New DevExpress.XtraEditors.SimpleButton()
@@ -30,7 +31,7 @@
             Me.TextBox_Precio = New System.Windows.Forms.TextBox()
             Me.SimpleButton_Guardar = New DevExpress.XtraEditors.SimpleButton()
             Me.ComboBox_Marca = New System.Windows.Forms.ComboBox()
-            Me.MarcaDTOBindingSource = New System.Windows.Forms.BindingSource()
+            Me.MarcaDTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
             Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
             Me.LabelControl_Talla = New DevExpress.XtraEditors.LabelControl()
             Me.LabelControl_Stock = New DevExpress.XtraEditors.LabelControl()
@@ -46,14 +47,14 @@
             'TableLayoutPanel1
             '
             Me.TableLayoutPanel1.ColumnCount = 8
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110.0!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121.0!))
             Me.TableLayoutPanel1.Controls.Add(Me.TextBox_Nombre, 0, 1)
             Me.TableLayoutPanel1.Controls.Add(Me.SimpleButton_Eliminar, 7, 0)
             Me.TableLayoutPanel1.Controls.Add(Me.LabelControl1, 0, 0)
@@ -82,9 +83,9 @@
             '
             Me.TextBox_Nombre.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextBox_Nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.TextBox_Nombre.Location = New System.Drawing.Point(107, 52)
+            Me.TextBox_Nombre.Location = New System.Drawing.Point(73, 52)
             Me.TextBox_Nombre.Name = "TextBox_Nombre"
-            Me.TextBox_Nombre.Size = New System.Drawing.Size(98, 24)
+            Me.TextBox_Nombre.Size = New System.Drawing.Size(112, 24)
             Me.TextBox_Nombre.TabIndex = 8
             '
             'SimpleButton_Eliminar
@@ -94,7 +95,7 @@
             Me.SimpleButton_Eliminar.Appearance.Options.UseFont = True
             Me.SimpleButton_Eliminar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Eliminar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton_Eliminar.Location = New System.Drawing.Point(730, 2)
+            Me.SimpleButton_Eliminar.Location = New System.Drawing.Point(716, 2)
             Me.SimpleButton_Eliminar.Margin = New System.Windows.Forms.Padding(2)
             Me.SimpleButton_Eliminar.Name = "SimpleButton_Eliminar"
             Me.SimpleButton_Eliminar.Size = New System.Drawing.Size(98, 39)
@@ -105,7 +106,7 @@
             '
             Me.LabelControl1.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl1.Location = New System.Drawing.Point(51, 12)
+            Me.LabelControl1.Location = New System.Drawing.Point(17, 12)
             Me.LabelControl1.Margin = New System.Windows.Forms.Padding(2)
             Me.LabelControl1.Name = "LabelControl1"
             Me.LabelControl1.Size = New System.Drawing.Size(51, 18)
@@ -116,7 +117,7 @@
             '
             Me.LabelControl_Nombre.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Nombre.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Nombre.Location = New System.Drawing.Point(43, 55)
+            Me.LabelControl_Nombre.Location = New System.Drawing.Point(9, 55)
             Me.LabelControl_Nombre.Margin = New System.Windows.Forms.Padding(2)
             Me.LabelControl_Nombre.Name = "LabelControl_Nombre"
             Me.LabelControl_Nombre.Size = New System.Drawing.Size(59, 18)
@@ -127,31 +128,31 @@
             '
             Me.LabelControl_Categoria.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Categoria.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Categoria.Location = New System.Drawing.Point(264, 12)
+            Me.LabelControl_Categoria.Location = New System.Drawing.Point(201, 12)
             Me.LabelControl_Categoria.Margin = New System.Windows.Forms.Padding(2)
             Me.LabelControl_Categoria.Name = "LabelControl_Categoria"
-            Me.LabelControl_Categoria.Size = New System.Drawing.Size(46, 18)
+            Me.LabelControl_Categoria.Size = New System.Drawing.Size(95, 18)
             Me.LabelControl_Categoria.TabIndex = 2
-            Me.LabelControl_Categoria.Text = "Marca"
+            Me.LabelControl_Categoria.Text = "Proveedores"
             '
             'TextBox_Codigo
             '
             Me.TextBox_Codigo.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextBox_Codigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.TextBox_Codigo.Location = New System.Drawing.Point(106, 9)
+            Me.TextBox_Codigo.Location = New System.Drawing.Point(72, 9)
             Me.TextBox_Codigo.Margin = New System.Windows.Forms.Padding(2)
             Me.TextBox_Codigo.Name = "TextBox_Codigo"
-            Me.TextBox_Codigo.Size = New System.Drawing.Size(100, 24)
+            Me.TextBox_Codigo.Size = New System.Drawing.Size(114, 24)
             Me.TextBox_Codigo.TabIndex = 0
             '
             'TextBox_Precio
             '
             Me.TextBox_Precio.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextBox_Precio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.TextBox_Precio.Location = New System.Drawing.Point(314, 52)
+            Me.TextBox_Precio.Location = New System.Drawing.Point(300, 52)
             Me.TextBox_Precio.Margin = New System.Windows.Forms.Padding(2)
             Me.TextBox_Precio.Name = "TextBox_Precio"
-            Me.TextBox_Precio.Size = New System.Drawing.Size(100, 24)
+            Me.TextBox_Precio.Size = New System.Drawing.Size(114, 24)
             Me.TextBox_Precio.TabIndex = 3
             '
             'SimpleButton_Guardar
@@ -161,7 +162,7 @@
             Me.SimpleButton_Guardar.Appearance.Options.UseFont = True
             Me.SimpleButton_Guardar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Guardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(629, 2)
+            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(615, 2)
             Me.SimpleButton_Guardar.Margin = New System.Windows.Forms.Padding(2)
             Me.SimpleButton_Guardar.Name = "SimpleButton_Guardar"
             Me.SimpleButton_Guardar.Size = New System.Drawing.Size(97, 39)
@@ -175,9 +176,9 @@
             Me.ComboBox_Marca.DisplayMember = "Nombre"
             Me.ComboBox_Marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.ComboBox_Marca.FormattingEnabled = True
-            Me.ComboBox_Marca.Location = New System.Drawing.Point(315, 8)
+            Me.ComboBox_Marca.Location = New System.Drawing.Point(301, 8)
             Me.ComboBox_Marca.Name = "ComboBox_Marca"
-            Me.ComboBox_Marca.Size = New System.Drawing.Size(98, 26)
+            Me.ComboBox_Marca.Size = New System.Drawing.Size(112, 26)
             Me.ComboBox_Marca.TabIndex = 2
             Me.ComboBox_Marca.ValueMember = "ID"
             '
@@ -189,7 +190,7 @@
             '
             Me.LabelControl4.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl4.Location = New System.Drawing.Point(262, 55)
+            Me.LabelControl4.Location = New System.Drawing.Point(248, 55)
             Me.LabelControl4.Margin = New System.Windows.Forms.Padding(2)
             Me.LabelControl4.Name = "LabelControl4"
             Me.LabelControl4.Size = New System.Drawing.Size(48, 18)
@@ -200,7 +201,7 @@
             '
             Me.LabelControl_Talla.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Talla.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Talla.Location = New System.Drawing.Point(480, 12)
+            Me.LabelControl_Talla.Location = New System.Drawing.Point(446, 12)
             Me.LabelControl_Talla.Name = "LabelControl_Talla"
             Me.LabelControl_Talla.Size = New System.Drawing.Size(37, 18)
             Me.LabelControl_Talla.TabIndex = 7
@@ -210,7 +211,7 @@
             '
             Me.LabelControl_Stock.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Stock.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Stock.Location = New System.Drawing.Point(475, 55)
+            Me.LabelControl_Stock.Location = New System.Drawing.Point(441, 55)
             Me.LabelControl_Stock.Margin = New System.Windows.Forms.Padding(2)
             Me.LabelControl_Stock.Name = "LabelControl_Stock"
             Me.LabelControl_Stock.Size = New System.Drawing.Size(43, 18)
@@ -221,23 +222,24 @@
             '
             Me.TextBox_Stock.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextBox_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.TextBox_Stock.Location = New System.Drawing.Point(523, 52)
+            Me.TextBox_Stock.Location = New System.Drawing.Point(489, 52)
             Me.TextBox_Stock.Name = "TextBox_Stock"
-            Me.TextBox_Stock.Size = New System.Drawing.Size(98, 24)
+            Me.TextBox_Stock.Size = New System.Drawing.Size(93, 24)
             Me.TextBox_Stock.TabIndex = 4
             '
             'TextBox_Talla
             '
             Me.TextBox_Talla.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.TextBox_Talla.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.TextBox_Talla.Location = New System.Drawing.Point(522, 9)
+            Me.TextBox_Talla.Location = New System.Drawing.Point(488, 9)
             Me.TextBox_Talla.Margin = New System.Windows.Forms.Padding(2)
             Me.TextBox_Talla.Name = "TextBox_Talla"
-            Me.TextBox_Talla.Size = New System.Drawing.Size(100, 24)
+            Me.TextBox_Talla.Size = New System.Drawing.Size(95, 24)
             Me.TextBox_Talla.TabIndex = 1
             '
             'TableLayoutPanel2
             '
+            Me.TableLayoutPanel2.AutoSize = True
             Me.TableLayoutPanel2.ColumnCount = 1
             Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
             Me.TableLayoutPanel2.Controls.Add(Me.TableLayoutPanel1, 0, 0)
@@ -273,6 +275,7 @@
             CType(Me.MarcaDTOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TableLayoutPanel2.ResumeLayout(False)
             Me.ResumeLayout(False)
+            Me.PerformLayout()
 
         End Sub
 

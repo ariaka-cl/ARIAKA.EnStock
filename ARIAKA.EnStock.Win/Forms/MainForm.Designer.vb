@@ -20,8 +20,9 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel()
+            Me.DefaultLookAndFeel_Main = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
             Me.TableLayoutPanel_Main = New System.Windows.Forms.TableLayoutPanel()
             Me.TableLayoutPanel_Dash = New System.Windows.Forms.TableLayoutPanel()
             Me.PictureBox_HomeImage = New System.Windows.Forms.PictureBox()
@@ -132,7 +133,7 @@
             Me.SimpleButton_AddSale.Name = "SimpleButton_AddSale"
             Me.SimpleButton_AddSale.Size = New System.Drawing.Size(114, 60)
             Me.SimpleButton_AddSale.TabIndex = 0
-            Me.SimpleButton_AddSale.Text = "Ventas"
+            Me.SimpleButton_AddSale.Text = "Venta"
             '
             'PictureBox1
             '
@@ -174,6 +175,7 @@
             Me.SimpleButton_Ventas.AutoWidthInLayoutControl = True
             Me.SimpleButton_Ventas.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Ventas.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.SimpleButton_Ventas.Image = CType(resources.GetObject("SimpleButton_Ventas.Image"), System.Drawing.Image)
             Me.SimpleButton_Ventas.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
             Me.SimpleButton_Ventas.Location = New System.Drawing.Point(3, 3)
             Me.SimpleButton_Ventas.Name = "SimpleButton_Ventas"
@@ -213,7 +215,7 @@
             Me.SimpleButton_Marca.Name = "SimpleButton_Marca"
             Me.SimpleButton_Marca.Size = New System.Drawing.Size(192, 99)
             Me.SimpleButton_Marca.TabIndex = 2
-            Me.SimpleButton_Marca.Text = "Marca"
+            Me.SimpleButton_Marca.Text = "Proveedores"
             '
             'MainForm
             '
@@ -225,9 +227,10 @@
             Me.ClientSize = New System.Drawing.Size(1053, 651)
             Me.Controls.Add(Me.TableLayoutPanel_Main)
             Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow
+            Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.Name = "MainForm"
             Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-            Me.Text = "EnStock"
+            Me.Text = "EnStock *** BABY SHEA ***"
             Me.TableLayoutPanel_Main.ResumeLayout(False)
             Me.TableLayoutPanel_Main.PerformLayout()
             Me.TableLayoutPanel_Dash.ResumeLayout(False)
