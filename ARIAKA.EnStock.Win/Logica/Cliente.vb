@@ -91,13 +91,24 @@ Namespace Logica
             Dim db As New EnStockContext
             Try
                 If productoDto Is Nothing Then Return New Models.ProductosDTO
-                Dim producto As New Productos With {.Codigo = productoDto.Codigo,
+                Dim producto As Productos
+                If productoDto.ID <> 0 Then
+                    producto = db.Productos.Where(Function(p) p.ID = productoDto.ID).SingleOrDefault()
+                    producto.Codigo = productoDto.Codigo
+                    producto.Nombre = productoDto.Nombre
+                    producto.Precio = productoDto.Precio
+                    producto.Stock = productoDto.Stock
+                    producto.Talla = productoDto.Talla
+                    producto.MarcaID = productoDto.MarcaID
+                Else
+                    producto = New Productos With {.Codigo = productoDto.Codigo,
                                                    .Nombre = productoDto.Nombre,
                                                    .Precio = productoDto.Precio,
                                                    .Stock = productoDto.Stock,
                                                    .Talla = productoDto.Talla,
                                                    .MarcaID = productoDto.MarcaID}
-                db.Productos.Add(producto)
+                    db.Productos.Add(producto)
+                End If
                 db.SaveChanges()
                 productoDto.ID = producto.ID
                 Return productoDto
@@ -181,8 +192,14 @@ Namespace Logica
         Public Function GuardarVenta(ventaModel As Models.VentasDTO) As Models.VentasDTO
             Dim db As New EnStockContext
             Try
-                Dim venta As New Ventas With {.FechaCreacion = ventaModel.FechaCreacion, .Total = ventaModel.Total}
-                db.Ventas.Add(venta)
+                Dim venta As Ventas
+                If ventaModel.ID <> 0 Then
+                    venta = db.Ventas.Where(Function(v) v.ID = ventaModel.ID).SingleOrDefault()
+                    venta.Total = ventaModel.Total
+                Else
+                    venta = New Ventas With {.FechaCreacion = ventaModel.FechaCreacion, .Total = ventaModel.Total}
+                    db.Ventas.Add(venta)
+                End If
                 db.SaveChanges()
                 ventaModel.ID = venta.ID
                 Return ventaModel
@@ -261,6 +278,27 @@ Namespace Logica
             Catch ex As Exception
                 MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error obtener Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return New Models.VentasDTO
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+        Public Function EliminarDetalleVenta(detalleDto As Models.DetalleVentasDTO, total As Integer) As Boolean
+            Dim db As New EnStockContext
+            Try
+                Dim detalle As DetalleVentas = db.DetalleVentas.Where(Function(dv) dv.ID = detalleDto.ID).SingleOrDefault()
+                db.DetalleVentas.Remove(detalle)
+                Dim venta As Ventas = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
+                venta.Total = total
+                Dim producto As Productos = db.Productos.Where(Function(p) CBool(p.ID = detalleDto.ProductoID)).SingleOrDefault()
+                If producto IsNot Nothing Then
+                    producto.Stock = producto.Stock + detalleDto.Cantidad
+                End If
+                db.SaveChanges()
+                Return True
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error elimnar detalle venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
             Finally
                 db.Dispose()
             End Try
