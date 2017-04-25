@@ -219,7 +219,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\logo-ariaka-small.png" />
   </ItemGroup>
@@ -234,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\baby-shea-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

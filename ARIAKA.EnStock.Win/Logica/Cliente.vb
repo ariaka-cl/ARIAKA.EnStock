@@ -288,8 +288,17 @@ Namespace Logica
             Try
                 Dim detalle As DetalleVentas = db.DetalleVentas.Where(Function(dv) dv.ID = detalleDto.ID).SingleOrDefault()
                 db.DetalleVentas.Remove(detalle)
-                Dim venta As Ventas = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
-                venta.Total = total
+                db.SaveChanges()
+                Dim countDetalle As Integer = db.DetalleVentas.Count(Function(dv) CBool(dv.VentasID = detalleDto.VentasID))
+                Dim venta As Ventas
+                If countDetalle = 0 Then
+                    venta = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
+                    db.Ventas.Remove(venta)
+                    db.SaveChanges()
+                Else
+                    venta = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
+                    venta.Total = total
+                End If
                 Dim producto As Productos = db.Productos.Where(Function(p) CBool(p.ID = detalleDto.ProductoID)).SingleOrDefault()
                 If producto IsNot Nothing Then
                     producto.Stock = producto.Stock + detalleDto.Cantidad
@@ -298,6 +307,32 @@ Namespace Logica
                 Return True
             Catch ex As Exception
                 MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error elimnar detalle venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Finally
+                db.Dispose()
+            End Try
+        End Function
+
+        Public Function EliminarVenta(ventaID As Integer) As Boolean
+            Dim db As New EnStockContext
+            Try
+                Dim Listdetalle As List(Of DetalleVentas) = db.DetalleVentas.Where(Function(dv) CBool(dv.VentasID = ventaID)).ToList()
+                For Each detalle As DetalleVentas In Listdetalle
+                    Dim produID As Integer = CInt(detalle.ProductoID)
+                    db.DetalleVentas.Remove(detalle)
+                    If produID = 0 Then Return False
+                    Dim producto As Productos = db.Productos.Where(Function(p) CBool(p.ID = produID)).SingleOrDefault()
+                    If producto IsNot Nothing Then
+                        producto.Stock = producto.Stock + detalle.Cantidad
+                    End If
+                    db.SaveChanges()
+                Next
+                Dim venta As Ventas = db.Ventas.Where(Function(v) v.ID = ventaID).SingleOrDefault()
+                db.Ventas.Remove(venta)
+                db.SaveChanges()
+                Return True
+            Catch ex As Exception
+                MessageBox.Show(String.Format("Error : {0}", ex.Message), "Error elimnar venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Finally
                 db.Dispose()

@@ -13,6 +13,7 @@ Namespace Controls
             End Set
         End Property
 
+
         Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
             PopulateProductos()
             If _ventaID <> 0 Then

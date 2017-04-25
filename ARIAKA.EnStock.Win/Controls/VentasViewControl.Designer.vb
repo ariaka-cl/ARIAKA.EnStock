@@ -28,10 +28,11 @@
             Me.LabelControl_Hasta = New DevExpress.XtraEditors.LabelControl()
             Me.DateTimePicker_Desde = New System.Windows.Forms.DateTimePicker()
             Me.DateTimePicker_Hasta = New System.Windows.Forms.DateTimePicker()
+            Me.SimpleButton_Buscar = New DevExpress.XtraEditors.SimpleButton()
             Me.TableLayoutPanel_Footer = New System.Windows.Forms.TableLayoutPanel()
             Me.LabelControl_Total = New DevExpress.XtraEditors.LabelControl()
             Me.LabelControl_Total_Value = New DevExpress.XtraEditors.LabelControl()
-            Me.SimpleButton_Buscar = New DevExpress.XtraEditors.SimpleButton()
+            Me.SimpleButton_Delete = New DevExpress.XtraEditors.SimpleButton()
             Me.TableLayoutPanel1.SuspendLayout()
             Me.TableLayoutPanel_DateBox.SuspendLayout()
             Me.TableLayoutPanel_Footer.SuspendLayout()
@@ -64,17 +65,19 @@
             '
             'TableLayoutPanel_DateBox
             '
-            Me.TableLayoutPanel_DateBox.ColumnCount = 5
-            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+            Me.TableLayoutPanel_DateBox.ColumnCount = 6
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.53133!))
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.20652!))
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.16848!))
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.9837!))
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.16848!))
+            Me.TableLayoutPanel_DateBox.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.70109!))
             Me.TableLayoutPanel_DateBox.Controls.Add(Me.LabelControl_Desde, 0, 0)
             Me.TableLayoutPanel_DateBox.Controls.Add(Me.LabelControl_Hasta, 2, 0)
             Me.TableLayoutPanel_DateBox.Controls.Add(Me.DateTimePicker_Desde, 1, 0)
             Me.TableLayoutPanel_DateBox.Controls.Add(Me.DateTimePicker_Hasta, 3, 0)
             Me.TableLayoutPanel_DateBox.Controls.Add(Me.SimpleButton_Buscar, 4, 0)
+            Me.TableLayoutPanel_DateBox.Controls.Add(Me.SimpleButton_Delete, 5, 0)
             Me.TableLayoutPanel_DateBox.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TableLayoutPanel_DateBox.Location = New System.Drawing.Point(3, 3)
             Me.TableLayoutPanel_DateBox.Name = "TableLayoutPanel_DateBox"
@@ -87,7 +90,7 @@
             '
             Me.LabelControl_Desde.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Desde.Appearance.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Desde.Location = New System.Drawing.Point(47, 17)
+            Me.LabelControl_Desde.Location = New System.Drawing.Point(17, 17)
             Me.LabelControl_Desde.Name = "LabelControl_Desde"
             Me.LabelControl_Desde.Size = New System.Drawing.Size(72, 25)
             Me.LabelControl_Desde.TabIndex = 0
@@ -97,7 +100,7 @@
             '
             Me.LabelControl_Hasta.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Hasta.Appearance.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Hasta.Location = New System.Drawing.Point(293, 17)
+            Me.LabelControl_Hasta.Location = New System.Drawing.Point(272, 17)
             Me.LabelControl_Hasta.Name = "LabelControl_Hasta"
             Me.LabelControl_Hasta.Size = New System.Drawing.Size(70, 25)
             Me.LabelControl_Hasta.TabIndex = 1
@@ -108,7 +111,7 @@
             Me.DateTimePicker_Desde.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.DateTimePicker_Desde.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.DateTimePicker_Desde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-            Me.DateTimePicker_Desde.Location = New System.Drawing.Point(125, 14)
+            Me.DateTimePicker_Desde.Location = New System.Drawing.Point(95, 14)
             Me.DateTimePicker_Desde.Name = "DateTimePicker_Desde"
             Me.DateTimePicker_Desde.Size = New System.Drawing.Size(116, 30)
             Me.DateTimePicker_Desde.TabIndex = 2
@@ -118,10 +121,24 @@
             Me.DateTimePicker_Hasta.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.DateTimePicker_Hasta.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.DateTimePicker_Hasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-            Me.DateTimePicker_Hasta.Location = New System.Drawing.Point(369, 14)
+            Me.DateTimePicker_Hasta.Location = New System.Drawing.Point(348, 14)
             Me.DateTimePicker_Hasta.Name = "DateTimePicker_Hasta"
             Me.DateTimePicker_Hasta.Size = New System.Drawing.Size(116, 30)
             Me.DateTimePicker_Hasta.TabIndex = 3
+            '
+            'SimpleButton_Buscar
+            '
+            Me.SimpleButton_Buscar.Anchor = System.Windows.Forms.AnchorStyles.Right
+            Me.SimpleButton_Buscar.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.SimpleButton_Buscar.Appearance.Options.UseFont = True
+            Me.SimpleButton_Buscar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+            Me.SimpleButton_Buscar.Image = CType(resources.GetObject("SimpleButton_Buscar.Image"), System.Drawing.Image)
+            Me.SimpleButton_Buscar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+            Me.SimpleButton_Buscar.Location = New System.Drawing.Point(482, 3)
+            Me.SimpleButton_Buscar.Name = "SimpleButton_Buscar"
+            Me.SimpleButton_Buscar.Size = New System.Drawing.Size(104, 53)
+            Me.SimpleButton_Buscar.TabIndex = 4
+            Me.SimpleButton_Buscar.Text = "Buscar"
             '
             'TableLayoutPanel_Footer
             '
@@ -158,19 +175,19 @@
             Me.LabelControl_Total_Value.TabIndex = 1
             Me.LabelControl_Total_Value.Text = "0"
             '
-            'SimpleButton_Buscar
+            'SimpleButton_Delete
             '
-            Me.SimpleButton_Buscar.Anchor = System.Windows.Forms.AnchorStyles.Left
-            Me.SimpleButton_Buscar.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.SimpleButton_Buscar.Appearance.Options.UseFont = True
-            Me.SimpleButton_Buscar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-            Me.SimpleButton_Buscar.Image = CType(resources.GetObject("SimpleButton_Buscar.Image"), System.Drawing.Image)
-            Me.SimpleButton_Buscar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton_Buscar.Location = New System.Drawing.Point(491, 3)
-            Me.SimpleButton_Buscar.Name = "SimpleButton_Buscar"
-            Me.SimpleButton_Buscar.Size = New System.Drawing.Size(104, 53)
-            Me.SimpleButton_Buscar.TabIndex = 4
-            Me.SimpleButton_Buscar.Text = "Buscar"
+            Me.SimpleButton_Delete.Anchor = System.Windows.Forms.AnchorStyles.Left
+            Me.SimpleButton_Delete.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.SimpleButton_Delete.Appearance.Options.UseFont = True
+            Me.SimpleButton_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+            Me.SimpleButton_Delete.Image = CType(resources.GetObject("SimpleButton_Delete.Image"), System.Drawing.Image)
+            Me.SimpleButton_Delete.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+            Me.SimpleButton_Delete.Location = New System.Drawing.Point(592, 3)
+            Me.SimpleButton_Delete.Name = "SimpleButton_Delete"
+            Me.SimpleButton_Delete.Size = New System.Drawing.Size(104, 53)
+            Me.SimpleButton_Delete.TabIndex = 5
+            Me.SimpleButton_Delete.Text = "Borrar"
             '
             'VentasViewControl
             '
@@ -199,5 +216,6 @@
         Friend WithEvents LabelControl_Total As DevExpress.XtraEditors.LabelControl
         Friend WithEvents LabelControl_Total_Value As DevExpress.XtraEditors.LabelControl
         Friend WithEvents SimpleButton_Buscar As DevExpress.XtraEditors.SimpleButton
+        Friend WithEvents SimpleButton_Delete As DevExpress.XtraEditors.SimpleButton
     End Class
 End Namespace
