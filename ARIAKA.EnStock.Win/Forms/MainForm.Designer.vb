@@ -34,6 +34,7 @@
             Me.SimpleButton_Ventas = New DevExpress.XtraEditors.SimpleButton()
             Me.SimpleButton_Productos = New DevExpress.XtraEditors.SimpleButton()
             Me.SimpleButton_Marca = New DevExpress.XtraEditors.SimpleButton()
+            Me.SimpleButton_Volver = New DevExpress.XtraEditors.SimpleButton()
             Me.TableLayoutPanel_Main.SuspendLayout()
             Me.TableLayoutPanel_Dash.SuspendLayout()
             CType(Me.PictureBox_HomeImage, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,6 +80,7 @@
             'PictureBox_HomeImage
             '
             Me.PictureBox_HomeImage.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PictureBox_HomeImage.Image = CType(resources.GetObject("PictureBox_HomeImage.Image"), System.Drawing.Image)
             Me.PictureBox_HomeImage.Location = New System.Drawing.Point(3, 3)
             Me.PictureBox_HomeImage.Name = "PictureBox_HomeImage"
             Me.PictureBox_HomeImage.Size = New System.Drawing.Size(837, 524)
@@ -95,6 +97,7 @@
             Me.TableLayoutPanel_Header.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
             Me.TableLayoutPanel_Header.Controls.Add(Me.SimpleButton_Search, 0, 0)
             Me.TableLayoutPanel_Header.Controls.Add(Me.SimpleButton_AddSale, 0, 0)
+            Me.TableLayoutPanel_Header.Controls.Add(Me.SimpleButton_Volver, 2, 0)
             Me.TableLayoutPanel_Header.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TableLayoutPanel_Header.Location = New System.Drawing.Point(207, 3)
             Me.TableLayoutPanel_Header.Name = "TableLayoutPanel_Header"
@@ -217,6 +220,21 @@
             Me.SimpleButton_Marca.TabIndex = 2
             Me.SimpleButton_Marca.Text = "Proveedores"
             '
+            'SimpleButton_Volver
+            '
+            Me.SimpleButton_Volver.Anchor = System.Windows.Forms.AnchorStyles.Right
+            Me.SimpleButton_Volver.Appearance.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.SimpleButton_Volver.Appearance.Options.UseFont = True
+            Me.SimpleButton_Volver.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+            Me.SimpleButton_Volver.Image = CType(resources.GetObject("SimpleButton_Volver.Image"), System.Drawing.Image)
+            Me.SimpleButton_Volver.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+            Me.SimpleButton_Volver.Location = New System.Drawing.Point(726, 24)
+            Me.SimpleButton_Volver.Name = "SimpleButton_Volver"
+            Me.SimpleButton_Volver.Size = New System.Drawing.Size(114, 60)
+            Me.SimpleButton_Volver.TabIndex = 2
+            Me.SimpleButton_Volver.Text = "Volver"
+            Me.SimpleButton_Volver.Visible = False
+            '
             'MainForm
             '
             Me.ActiveGlowColor = System.Drawing.Color.Transparent
@@ -255,5 +273,6 @@
         Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
         Friend WithEvents PictureBox_HomeImage As Windows.Forms.PictureBox
         Friend WithEvents SimpleButton_Search As DevExpress.XtraEditors.SimpleButton
+        Friend WithEvents SimpleButton_Volver As DevExpress.XtraEditors.SimpleButton
     End Class
 End Namespace

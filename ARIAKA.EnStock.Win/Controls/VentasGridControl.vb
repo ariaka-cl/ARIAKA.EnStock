@@ -11,7 +11,6 @@ Namespace Controls
                 MessageBox.Show(String.Format("Fallo al obtener Comanda N°: {0}", ventaID), "Obtener Venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return
             End If
-
             CallDetalleVenta(ventaID)
         End Sub
 
@@ -21,6 +20,7 @@ Namespace Controls
             ventas.VentaID = ventaID
             My.Forms.MainForm.TableLayoutPanel_Dash.Controls.Add(ventas, 0, 0)
             My.Forms.MainForm.TableLayoutPanel_Dash.Refresh()
+            My.Forms.MainForm.SimpleButton_Volver.Visible = True
         End Sub
     End Class
 End Namespace

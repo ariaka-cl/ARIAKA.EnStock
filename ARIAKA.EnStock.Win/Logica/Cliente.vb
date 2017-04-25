@@ -288,8 +288,17 @@ Namespace Logica
             Try
                 Dim detalle As DetalleVentas = db.DetalleVentas.Where(Function(dv) dv.ID = detalleDto.ID).SingleOrDefault()
                 db.DetalleVentas.Remove(detalle)
-                Dim venta As Ventas = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
-                venta.Total = total
+                db.SaveChanges()
+                Dim countDetalle As Integer = db.DetalleVentas.Count(Function(dv) CBool(dv.VentasID = detalleDto.VentasID))
+                Dim venta As Ventas
+                If countDetalle = 0 Then
+                    venta = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
+                    db.Ventas.Remove(venta)
+                    db.SaveChanges()
+                Else
+                    venta = db.Ventas.Where(Function(v) v.ID = detalleDto.VentasID).SingleOrDefault()
+                    venta.Total = total
+                End If
                 Dim producto As Productos = db.Productos.Where(Function(p) CBool(p.ID = detalleDto.ProductoID)).SingleOrDefault()
                 If producto IsNot Nothing Then
                     producto.Stock = producto.Stock + detalleDto.Cantidad
