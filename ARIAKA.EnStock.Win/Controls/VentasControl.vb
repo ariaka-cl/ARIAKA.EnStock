@@ -139,7 +139,6 @@ Namespace Controls
 
         Public Sub PopulateDetalleVentas()
             Dim venta As Models.VentasDTO = _cliente.GetOneVenta(_ventaID)
-            Me.TextEdit_Venta_Numero.Text = venta.ID.ToString
             Me.DateTimePicker_Fecha.Value = venta.FechaCreacion.Value.Date
             Dim total As Integer = 0
             If venta.ListaDetalleVenta IsNot Nothing Then
@@ -152,6 +151,8 @@ Namespace Controls
                 Me.GridView1.RefreshEditor(True)
             End If
             Me.LabelControl_Total_Value.Text = total.ToString()
+            TextEdit_Venta_Numero.Text = venta.ID.ToString
+            TextEdit_Venta_Numero.Refresh()
         End Sub
 
         Private Sub DateTimePicker_Fecha_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker_Fecha.ValueChanged
@@ -160,6 +161,7 @@ Namespace Controls
             Me.GridView1.RefreshEditor(True)
             Me.LabelControl_Total_Value.Text = "0"
             Me.TextEdit_Cantidad.Text = ""
+            Me.TextEdit_Venta_Numero.Text = ""
             _ventaID = 0
         End Sub
     End Class
