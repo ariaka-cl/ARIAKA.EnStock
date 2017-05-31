@@ -70,6 +70,7 @@ Namespace Controls
                                                                      .FechaCreacion = Date.Now.Date,
                                                                      .ProductoID = idProduct}
             Me.DetalleVentasDTOBindingSource.Add(detalleVentaDto)
+            Me.GridControl_DetalleVenta.DataSource = DetalleVentasDTOBindingSource.DataSource
             Me.GridView1.RefreshEditor(True)
         End Sub
         Private Sub SumarTotal(precio As Integer)
@@ -153,6 +154,13 @@ Namespace Controls
             Me.LabelControl_Total_Value.Text = total.ToString()
         End Sub
 
-
+        Private Sub DateTimePicker_Fecha_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker_Fecha.ValueChanged
+            DetalleVentasDTOBindingSource.Clear()
+            GridControl_DetalleVenta.DataSource = DetalleVentasDTOBindingSource
+            Me.GridView1.RefreshEditor(True)
+            Me.LabelControl_Total_Value.Text = "0"
+            Me.TextEdit_Cantidad.Text = ""
+            _ventaID = 0
+        End Sub
     End Class
 End Namespace
