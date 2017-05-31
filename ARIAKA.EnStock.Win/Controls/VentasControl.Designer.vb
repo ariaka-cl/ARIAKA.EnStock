@@ -103,7 +103,7 @@
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.07317!))
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.43902!))
             Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139.0!))
-            Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199.0!))
+            Me.TableLayoutPanel_Buttons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200.0!))
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.LabelControl_Total_Text, 1, 0)
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.LabelControl_Total_Value, 2, 0)
             Me.TableLayoutPanel_Buttons.Controls.Add(Me.SimpleButton_Guardar, 3, 0)
@@ -121,7 +121,7 @@
             '
             Me.LabelControl_Total_Text.Anchor = System.Windows.Forms.AnchorStyles.Right
             Me.LabelControl_Total_Text.Appearance.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Total_Text.Location = New System.Drawing.Point(200, 26)
+            Me.LabelControl_Total_Text.Location = New System.Drawing.Point(199, 26)
             Me.LabelControl_Total_Text.Name = "LabelControl_Total_Text"
             Me.LabelControl_Total_Text.Size = New System.Drawing.Size(76, 23)
             Me.LabelControl_Total_Text.TabIndex = 0
@@ -131,7 +131,7 @@
             '
             Me.LabelControl_Total_Value.Anchor = System.Windows.Forms.AnchorStyles.Left
             Me.LabelControl_Total_Value.Appearance.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelControl_Total_Value.Location = New System.Drawing.Point(282, 26)
+            Me.LabelControl_Total_Value.Location = New System.Drawing.Point(281, 26)
             Me.LabelControl_Total_Value.Name = "LabelControl_Total_Value"
             Me.LabelControl_Total_Value.Size = New System.Drawing.Size(12, 23)
             Me.LabelControl_Total_Value.TabIndex = 1
@@ -145,7 +145,7 @@
             Me.SimpleButton_Guardar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
             Me.SimpleButton_Guardar.Image = CType(resources.GetObject("SimpleButton_Guardar.Image"), System.Drawing.Image)
             Me.SimpleButton_Guardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(381, 8)
+            Me.SimpleButton_Guardar.Location = New System.Drawing.Point(379, 8)
             Me.SimpleButton_Guardar.Name = "SimpleButton_Guardar"
             Me.SimpleButton_Guardar.Size = New System.Drawing.Size(115, 59)
             Me.SimpleButton_Guardar.TabIndex = 2
@@ -160,7 +160,7 @@
             Me.SimpleButton2.Enabled = False
             Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
             Me.SimpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-            Me.SimpleButton2.Location = New System.Drawing.Point(502, 8)
+            Me.SimpleButton2.Location = New System.Drawing.Point(500, 8)
             Me.SimpleButton2.Name = "SimpleButton2"
             Me.SimpleButton2.Size = New System.Drawing.Size(115, 59)
             Me.SimpleButton2.TabIndex = 3
@@ -181,7 +181,7 @@
             Me.TableLayoutPanel_VentaFecha.RowCount = 2
             Me.TableLayoutPanel_VentaFecha.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
             Me.TableLayoutPanel_VentaFecha.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel_VentaFecha.Size = New System.Drawing.Size(176, 70)
+            Me.TableLayoutPanel_VentaFecha.Size = New System.Drawing.Size(175, 70)
             Me.TableLayoutPanel_VentaFecha.TabIndex = 4
             '
             'DateTimePicker_Fecha
@@ -191,7 +191,7 @@
             Me.DateTimePicker_Fecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
             Me.DateTimePicker_Fecha.Location = New System.Drawing.Point(61, 41)
             Me.DateTimePicker_Fecha.Name = "DateTimePicker_Fecha"
-            Me.DateTimePicker_Fecha.Size = New System.Drawing.Size(112, 23)
+            Me.DateTimePicker_Fecha.Size = New System.Drawing.Size(111, 23)
             Me.DateTimePicker_Fecha.TabIndex = 2
             '
             'LabelControl_Fecha_text
